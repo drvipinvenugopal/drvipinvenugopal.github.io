@@ -74,10 +74,10 @@ h1,h2,h3{font-weight:600;line-height:1.2;margin:0}
 h1{font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:-.015em;font-variation-settings:"opsz" 72}
 h2{font-size:1.75rem;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
 h3{font-size:1.15rem;margin:1.75rem 0 .6rem}
-p{margin:0 0 1rem;max-width:64ch}
+p{margin:0 0 1rem;max-width:none}
 .role{font-size:1.2rem;margin:.9rem 0 .2rem}
 .affil{font-family:var(--sans);font-size:.95rem;color:var(--muted);margin:0 0 1.5rem;max-width:none}
-.lede{font-size:1.2rem;line-height:1.55;max-width:62ch}
+.lede{font-size:1.2rem;line-height:1.55;max-width:none}
 
 
 .scholar{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 2rem;margin:0 0 1.5rem;padding:.9rem 1.1rem;background:var(--panel);border-radius:6px;font-family:var(--sans)}
@@ -87,9 +87,15 @@ p{margin:0 0 1rem;max-width:64ch}
 .scholar dd{margin:0;font-family:var(--serif);font-size:1.6rem;font-weight:600;line-height:1;order:1}
 .scholar dl{display:contents}
 .scholar .src{font-size:.82rem;color:var(--muted);margin:0;max-width:none;flex-basis:100%}
+/* Justified text (hyphenation keeps word gaps even, especially on narrow screens) */
+main p,.themes li,.pubs li,details li{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
+.affil,.metrics .src,.scholar .src,#contact p,.actions,.meta,.filter,.empty,footer{text-align:left;-webkit-hyphens:manual;hyphens:manual}
+.pubs a,.actions a{-webkit-hyphens:none;hyphens:none}
+
 /* Lists */
-.links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem 1.5rem}
-.themes{padding-left:1.1rem;margin:0 0 1rem;max-width:64ch}
+.links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.5rem}
+@media (max-width:860px){.links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.themes{padding-left:1.1rem;margin:0 0 1rem;max-width:none}
 .themes li{margin-bottom:.35rem}
 .filter{font-family:var(--sans);margin:0 0 1rem}
 .filter input{font:inherit;font-size:.95rem;padding:.5rem .75rem;width:100%;max-width:340px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:4px}
@@ -255,6 +261,7 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
         <li><a href="https://www.scopus.com/authid/detail.uri?authorId=57227676500">Scopus (57227676500)</a></li>
         <li><a href="https://www.webofscience.com/wos/author/record/2372905">Web of Science (AAY-6940-2021)</a></li>
         <li><a href="https://github.com/VipinBioLab">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/dr-vipin-venugopal/">LinkedIn</a></li>
       </ul>
     </section>
 
