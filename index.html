@@ -92,6 +92,15 @@ main p,.themes li,.pubs li,details li{text-align:justify;text-justify:inter-word
 .affil,.metrics .src,.scholar .src,#contact p,.actions,.meta,.filter,.empty,footer{text-align:left;-webkit-hyphens:manual;hyphens:manual}
 .pubs a,.actions a{-webkit-hyphens:none;hyphens:none}
 
+/* Portrait next to the name */
+.head{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin:0 0 1.5rem}
+.head-text{min-width:0}
+.head-text .affil{margin-bottom:0}
+.portrait{order:2;flex:0 0 auto;width:11rem;height:11rem;border-radius:50%;object-fit:cover;background:var(--panel);border:1px solid var(--rule)}
+@media (max-width:560px){
+  .head{flex-direction:column-reverse;align-items:flex-start;gap:1rem}
+  .portrait{width:8rem;height:8rem}
+}
 /* Lists */
 .links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.5rem}
 @media (max-width:860px){.links{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -229,9 +238,14 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
 
   <main id="main">
     <section id="about">
-      <h1 id="top">Dr. Vipin Venugopal</h1>
-      <p class="role">Assistant Professor (Selection Grade)</p>
-      <p class="affil">Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore, Tamil Nadu 641 112, India</p>
+      <div class="head">
+        <img class="portrait" src="photo.jpg" width="640" height="640" alt="Portrait of Dr. Vipin Venugopal">
+        <div class="head-text">
+        <h1 id="top">Dr. Vipin Venugopal</h1>
+        <p class="role">Assistant Professor (Selection Grade)</p>
+        <p class="affil">Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore, Tamil Nadu 641 112, India</p>
+        </div>
+      </div>
       <p class="lede">An accomplished Artificial Intelligence (AI) and Deep Learning researcher with 15 years of academic experience and a Ph.D. specializing in computational modeling. My expertise lies in developing novel deep learning algorithms and AI-driven diagnostic tools, with a focus on computer vision applications.</p>
       <p>I have a proven record of publishing in high-impact Q1 journals and a passion for mentoring students in cutting-edge AI technologies.</p>
       <p>I welcome collaborative research and consultation projects in computer vision. <a href="#contact">Get in touch</a>.</p>
