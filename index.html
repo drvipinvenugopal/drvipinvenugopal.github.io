@@ -54,7 +54,9 @@ a:hover{color:var(--accent-ink)}
 .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:.5rem 1rem;z-index:10}
 .skip:focus{left:0}
 
-.shell{max-width:1120px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:230px minmax(0,1fr);gap:4rem}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.shell{--gap:4rem;--side:14.5rem;max-width:72rem;margin:0 auto;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:var(--gap);
+  padding-left:max(1.5rem,env(safe-area-inset-left));padding-right:max(1.5rem,env(safe-area-inset-right))}
 aside{position:sticky;top:0;align-self:start;padding:3rem 0;height:100vh;display:flex;flex-direction:column;justify-content:space-between}
 .brand{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.2;margin:0 0 .25rem}
 .brand a{color:var(--ink);text-decoration:none}
@@ -65,8 +67,9 @@ nav a:hover,nav a.on{color:var(--ink);border-left-color:var(--accent)}
 .theme{font-family:var(--sans);font-size:.85rem;background:none;border:1px solid var(--rule);color:var(--muted);padding:.35rem .7rem;border-radius:4px;cursor:pointer;align-self:flex-start}
 .theme:hover{color:var(--ink);border-color:var(--muted)}
 
-main{padding:3rem 0 5rem;min-width:0}
-section{padding:0 0 3.5rem;scroll-margin-top:2rem}
+main{padding:3rem 0 5rem;min-width:0;overflow-wrap:break-word}
+img,video,canvas,svg{max-width:100%;height:auto}
+section{padding:0 0 3.5rem;scroll-margin-top:var(--anchor,2rem)}
 h1,h2,h3{font-weight:600;line-height:1.2;margin:0}
 h1{font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:-.015em;font-variation-settings:"opsz" 72}
 h2{font-size:1.75rem;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
@@ -76,14 +79,30 @@ p{margin:0 0 1rem;max-width:64ch}
 .affil{font-family:var(--sans);font-size:.95rem;color:var(--muted);margin:0 0 1.5rem;max-width:none}
 .lede{font-size:1.2rem;line-height:1.55;max-width:62ch}
 
+/* Scholar metrics */
+.metrics{display:flex;flex-wrap:wrap;gap:.5rem 2.5rem;margin:0 0 1.75rem;padding:0 0 1.25rem;border-bottom:1px solid var(--rule)}
+.metrics[hidden]{display:none}
+.metrics div{display:flex;flex-direction:column}
+.metrics .num{font-size:2rem;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.metrics .lab{font-family:var(--sans);font-size:.9rem;color:var(--muted)}
+.metrics .src{flex-basis:100%;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.25rem 0 0}
+
+.scholar{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 2rem;margin:0 0 1.5rem;padding:.9rem 1.1rem;background:var(--panel);border-radius:6px;font-family:var(--sans)}
+.scholar[hidden]{display:none}
+.scholar div{display:flex;align-items:baseline;gap:.5rem}
+.scholar dt{font-size:.9rem;color:var(--muted);order:2}
+.scholar dd{margin:0;font-family:var(--serif);font-size:1.6rem;font-weight:600;line-height:1;order:1}
+.scholar dl{display:contents}
+.scholar .src{font-size:.82rem;color:var(--muted);margin:0;max-width:none;flex-basis:100%}
 /* Lists */
 .links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem 1.5rem}
 .themes{padding-left:1.1rem;margin:0 0 1rem;max-width:64ch}
 .themes li{margin-bottom:.35rem}
 .filter{font-family:var(--sans);margin:0 0 1rem}
 .filter input{font:inherit;font-size:.95rem;padding:.5rem .75rem;width:100%;max-width:340px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:4px}
-.pubs{list-style:none;margin:0;padding:0}
-.pubs li{padding:1rem 0;border-bottom:1px solid var(--rule);font-size:1.02rem;line-height:1.55}
+.pubs{list-style:decimal outside;margin:0;padding:0 0 0 2.4rem}
+.pubs li::marker{font-family:var(--sans);font-size:.95rem;color:var(--muted)}
+.pubs li{padding:1rem 0 1rem .3rem;border-bottom:1px solid var(--rule);font-size:1.02rem;line-height:1.55}
 .pubs li:last-child{border-bottom:0}
 .pubs .title{font-weight:600}
 .pubs .venue{font-style:italic}
@@ -106,17 +125,87 @@ details li{margin-bottom:.3rem}
 .timeline .note{color:var(--muted);font-style:italic}
 footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
 
+
+.actions button.cite{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;cursor:pointer}
+.actions button.cite:hover{color:var(--accent-ink)}
+dialog.cite-dialog{background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:8px;padding:1.25rem 1.4rem 1.4rem;width:min(660px,92vw);font-family:var(--sans);font-size:.95rem}
+dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
+.cite-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cite-head h3{margin:0;font-family:var(--serif);font-size:1.25rem}
+.cite-x{font:inherit;font-size:1.4rem;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer;padding:.1rem .4rem}
+.cite-x:hover{color:var(--ink)}
+.cite-tabs{display:flex;gap:.4rem;margin-bottom:.7rem}
+.cite-tabs button{font:inherit;background:none;border:1px solid var(--rule);color:var(--muted);padding:.3rem .8rem;border-radius:4px;cursor:pointer}
+.cite-tabs button[aria-selected="true"]{background:var(--panel);color:var(--ink);border-color:var(--muted)}
+.cite-dialog textarea{width:100%;min-height:210px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;line-height:1.5;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:.7rem}
+.cite-actions{display:flex;align-items:center;gap:.6rem;margin-top:.8rem}
+.cite-actions button{font:inherit;background:var(--accent);color:var(--paper);border:0;border-radius:4px;padding:.4rem .9rem;cursor:pointer}
+.cite-actions button.alt{background:none;color:var(--accent);border:1px solid var(--accent)}
+#citeStatus{color:var(--muted);font-size:.88rem}
+/* Big monitors and TVs: scale everything up together, keep the reading width sensible */
+@media (min-width:1600px){html{font-size:112.5%}}
+@media (min-width:2200px){html{font-size:131.25%}}
+@media (min-width:3000px){html{font-size:175%}}
+
+/* Small laptops and landscape tablets */
+@media (max-width:1100px){.shell{--gap:2.5rem;--side:12.5rem}}
+
+/* Short laptop screens: a full-height sidebar would overflow, so let it scroll with the page */
+@media (min-width:861px) and (max-height:620px){aside{position:static;height:auto;gap:1.5rem}}
+
+/* Tablets in portrait and phones: single column with a sticky top bar */
 @media (max-width:860px){
-  .shell{grid-template-columns:1fr;gap:0}
-  aside{position:static;height:auto;padding:1.75rem 0 1rem}
-  nav ul{display:flex;flex-wrap:wrap;gap:.25rem 1.1rem}
-  nav a{border-left:0;padding:.2rem 0;border-bottom:2px solid transparent}
+  .shell{--gap:0;--anchor:5.5rem;grid-template-columns:1fr}
+  aside{position:sticky;top:0;z-index:5;height:auto;padding:.7rem 0 0;margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem;
+    background:var(--paper);border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.35rem 1rem}
+  aside > div{display:contents}
+  .brand{margin:0;font-size:1.2rem}
+  .tagline{display:none}
+  .theme{order:2;margin:0;padding:.4rem .75rem;min-height:2.5rem}
+  nav{order:3;flex-basis:100%;min-width:0}
+  nav ul{display:flex;flex-wrap:nowrap;gap:1.1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.1rem}
+  nav ul::-webkit-scrollbar{display:none}
+  nav li{flex:0 0 auto}
+  nav a{border-left:0;padding:.55rem 0;border-bottom:2px solid transparent;white-space:nowrap}
   nav a:hover,nav a.on{border-bottom-color:var(--accent)}
-  .theme{margin-top:1rem}
-  main{padding-top:1.5rem}
+  main{padding-top:1.75rem}
   .timeline li{grid-template-columns:1fr;gap:.1rem}
 }
-@media print{aside .theme,nav,.filter{display:none}.shell{display:block}aside{position:static;height:auto}}
+
+/* Phones */
+@media (max-width:560px){
+  body{font-size:1.02rem}
+  .shell{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
+  aside{margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+  h2{font-size:1.5rem}
+  .lede{font-size:1.1rem}
+  section{padding-bottom:2.75rem}
+  .metrics{gap:.5rem 1.75rem}
+  .metrics .num{font-size:1.65rem}
+  .links{grid-template-columns:1fr}
+  .pubs{padding-left:1.9rem}
+  .pubs li{font-size:.98rem}
+  .actions{gap:.4rem 1.1rem}
+  .actions a,.actions button{padding:.35rem 0}
+  .filter input{max-width:none}
+  dialog.cite-dialog{width:94vw;padding:1rem}
+  .cite-dialog textarea{min-height:170px}
+}
+
+/* Very small phones */
+@media (max-width:360px){
+  body{font-size:1rem}
+  h1{font-size:2.1rem}
+  .metrics .num{font-size:1.45rem}
+}
+
+/* Touch screens: comfortable tap targets */
+@media (pointer:coarse){
+  .theme,.cite-actions button,.cite-tabs button{min-height:2.75rem}
+  details summary{padding:.35rem 0}
+}
+@media print{aside .theme,nav,.filter,.cite{display:none}.shell{display:block}aside{position:static;height:auto}}
 </style>
 </head>
 <body>
@@ -154,6 +243,20 @@ footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1p
 
     <section id="research">
       <h2>Research</h2>
+      <div class="scholar" id="scholar" hidden>
+        <dl>
+          <div><dt>Citations</dt><dd id="sch-cit"></dd></div>
+          <div><dt>h-index</dt><dd id="sch-h"></dd></div>
+          <div><dt>i10-index</dt><dd id="sch-i10"></dd></div>
+        </dl>
+        <p class="src">From <a id="sch-link" href="https://scholar.google.com/citations?user=jcwBpgIAAAAJ&amp;hl=en">Google Scholar</a>, updated <span id="sch-date"></span>.</p>
+      </div>
+      <div class="metrics" id="metrics" hidden>
+        <div><span class="num" id="m-cit">-</span><span class="lab">Citations</span></div>
+        <div><span class="num" id="m-h">-</span><span class="lab">h-index</span></div>
+        <div><span class="num" id="m-i10">-</span><span class="lab">i10-index</span></div>
+        <p class="src">From <a href="https://scholar.google.com/citations?user=jcwBpgIAAAAJ&amp;hl=en">Google Scholar</a>, updated <span id="m-date"></span></p>
+      </div>
       <p>My work sits between biomedical imaging, signal processing and machine learning. Current themes:</p>
       <ul class="themes">
         <li>Image restoration and enhancement: deblurring, denoising, illumination correction and contrast enhancement</li>
@@ -168,7 +271,6 @@ footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1p
         <li><a href="https://www.scopus.com/authid/detail.uri?authorId=57227676500">Scopus (57227676500)</a></li>
         <li><a href="https://www.webofscience.com/wos/author/record/2372905">Web of Science (AAY-6940-2021)</a></li>
         <li><a href="https://github.com/VipinBioLab">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/dr-vipin-venugopal/">LinkedIn</a></li>
       </ul>
     </section>
 
@@ -176,32 +278,36 @@ footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1p
       <h2>Selected journal articles</h2>
       <div class="filter"><label>Filter publications <input type="search" data-filter="journal-list" placeholder="Title, author, venue or year"></label></div>
       <ol class="pubs" id="journal-list">
-        <li>Siju K.S., <strong>Vipin Venugopal</strong>, Mithun Kumar Kar and Jayakrishnan Anandakrishnan. <span class="title">An interpretable deep learning method for medical image deblurring and restoration.</span> <span class="venue">Healthcare Analytics</span>, Elsevier, vol. 9, art. 100468, June 2026.<span class="pill">Scopus Q1</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.health.2026.100468">DOI</a><a href="https://github.com/sijuswamyresearch/SAGA">Code</a></div></li>
-        <li>Siju K.S., <strong>Vipin Venugopal</strong>, V. Sowmya and Mithun Kumar Kar. <span class="title">X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising.</span> <span class="venue">Computer Methods and Programs in Biomedicine Update</span>, Elsevier, vol. 9, art. 100247, June 2026.<span class="pill">Scopus Q1</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.cmpbup.2026.100247">DOI</a><a href="https://github.com/sijuswamyresearch/X-GAN">Code</a></div></li>
-        <li>K. Yamuna Devi, J. Sofia Bobby, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">A metaheuristics-equipped post-processing model for coronary angiograms.</span> <span class="venue">Radiography</span>, Elsevier, vol. 32, art. 103355, May 2026.<span class="pill">Scopus Q1</span><span class="pill">IF 2.8</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.radi.2026.103355">DOI</a></div></li>
-        <li>S. Sathish, J. Shanmugapriyan, R. Praveen Kumar, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover.</span> <span class="venue">Earth Science Informatics</span>, Springer Nature, vol. 19, art. 6, December 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.1</span>
-          <div class="actions"><a href="https://doi.org/10.1007/s12145-025-02052-z">DOI</a></div></li>
-        <li>Likith Adithya, Gowtham Sai Chandra, Sri Naga Harshavardhan, Ruthvik Guptha, Anoop B.N. and <strong>Vipin Venugopal</strong>. <span class="title">IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs.</span> <span class="venue">Franklin Open</span>, Elsevier, vol. 13, p. 100439, December 2025.<span class="pill">Scopus Q3</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.fraope.2025.100439">DOI</a><a href="https://github.com/Blackmonarch4574/IlluC-Net-An-attention-guided-U-Net-for-illumination-correction-in-dermatological-macro-photographs">Code</a></div></li>
-        <li>Mithun Kumar Kar, <strong>Vipin Venugopal</strong> and Anoop B.N. <span class="title">LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 177019-177035, November 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
-          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3621107">DOI</a><a href="https://github.com/VipinBioLab/LeSegGAN">Code</a></div></li>
-        <li>Naveen K.V., Anoop B.N., Siju K.S., Mithun Kumar Kar and <strong>Vipin Venugopal</strong>. <span class="title">EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 79793-79804, May 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
-          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3566073">DOI</a><a href="https://github.com/Boredlambda/EffNet-SVM">Code</a></div></li>
-        <li>K. Yamuna Devi, J. Shanmuga Priyan, P.G. Kuppusamy, Deepa Beeta Thiyam, <strong>Vipin Venugopal</strong> and Sathish Sankaran. <span class="title">Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy.</span> <span class="venue">Biomedical Signal Processing and Control</span>, Elsevier, vol. 104, June 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 4.9</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.bspc.2025.107558">DOI</a></div></li>
-        <li><strong>Vipin Venugopal</strong>, Malaya Kumar Nath, Justin Joshep and M. Vipin Das. <span class="title">A deep learning-based illumination transform for devignetting photographs of dermatological lesions.</span> <span class="venue">Image and Vision Computing</span>, Elsevier, vol. 142, February 2024.<span class="pill">Scopus Q1</span><span class="pill">IF 4.7</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.imavis.2024.104909">DOI</a><a href="https://github.com/VipinBioLab/IECET">Code</a></div></li>
-        <li><strong>Vipin Venugopal</strong>, Navin Infant Raj, Malaya Kumar Nath and Norton Stephen. <span class="title">A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images.</span> <span class="venue">Decision Analytics Journal</span>, Elsevier, vol. 8, September 2023.<span class="pill">Scopus Q1</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.dajour.2023.100278">DOI</a></div></li>
-        <li>Duggani Keerthana, <strong>Vipin Venugopal</strong>, Malaya Kumar Nath and Madhusudan Mishra. <span class="title">Hybrid convolutional neural networks with SVM classifier for classification of skin cancer.</span> <span class="venue">Biomedical Engineering Advances</span>, Elsevier, vol. 5, June 2023.
-          <div class="actions"><a href="https://doi.org/10.1016/j.bea.2022.100069">DOI</a></div></li>
-        <li><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images.</span> <span class="venue">Computers in Biology and Medicine</span>, Elsevier, vol. 148, September 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 7.7</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.compbiomed.2022.105852">DOI</a><a href="https://github.com/VipinBioLab/DTP-Net">Code</a></div></li>
-        <li><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions.</span> <span class="venue">Computer Methods and Programs in Biomedicine</span>, Elsevier, vol. 222, July 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 6.1</span>
-          <div class="actions"><a href="https://doi.org/10.1016/j.cmpb.2022.106935">DOI</a><a href="https://github.com/VipinBioLab/EMST">Code</a></div></li>
+        <li value="1">Manan Mathur, S. Niyas, <strong>Vipin Venugopal</strong>, S. Raghavendra, Terry Jacob Mathew, Abhishek R. Kothari and B.N. Anoop. <span class="title">Effective deep learning framework for retinal abnormality detection in OCT imaging.</span> <span class="venue">IEEE Access</span>, vol. 14, pp. 131943-131958, September 2026.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2026.3724989">DOI</a><button type="button" class="cite" data-cite="j1" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="2">Jayakrishnan Anandakrishnan, Alkha Mohan, <strong>Vipin Venugopal</strong>, Weiwei Jiang, Mohd Amiruddin Abd Rahman and Jawad Khan. <span class="title">Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification.</span> <span class="venue">IEEE Access</span>, August 2026.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2026.3709031">DOI</a><button type="button" class="cite" data-cite="j2" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="3">Siju K.S., <strong>Vipin Venugopal</strong>, Mithun Kumar Kar and Jayakrishnan Anandakrishnan. <span class="title">An interpretable deep learning method for medical image deblurring and restoration.</span> <span class="venue">Healthcare Analytics</span>, Elsevier, vol. 9, art. 100468, June 2026.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.health.2026.100468">DOI</a><button type="button" class="cite" data-cite="j3" aria-haspopup="dialog">Cite</button><a href="https://github.com/sijuswamyresearch/SAGA">Code</a></div></li>
+        <li value="4">Siju K.S., <strong>Vipin Venugopal</strong>, V. Sowmya and Mithun Kumar Kar. <span class="title">X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising.</span> <span class="venue">Computer Methods and Programs in Biomedicine Update</span>, Elsevier, vol. 9, art. 100247, June 2026.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.cmpbup.2026.100247">DOI</a><button type="button" class="cite" data-cite="j4" aria-haspopup="dialog">Cite</button><a href="https://github.com/sijuswamyresearch/X-GAN">Code</a></div></li>
+        <li value="5">K. Yamuna Devi, J. Sofia Bobby, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">A metaheuristics-equipped post-processing model for coronary angiograms.</span> <span class="venue">Radiography</span>, Elsevier, vol. 32, art. 103355, May 2026.<span class="pill">Scopus Q1</span><span class="pill">IF 2.8</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.radi.2026.103355">DOI</a><button type="button" class="cite" data-cite="j5" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="6">S. Sathish, J. Shanmugapriyan, R. Praveen Kumar, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover.</span> <span class="venue">Earth Science Informatics</span>, Springer Nature, vol. 19, art. 6, December 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.1</span>
+          <div class="actions"><a href="https://doi.org/10.1007/s12145-025-02052-z">DOI</a><button type="button" class="cite" data-cite="j6" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="7">Likith Adithya, Gowtham Sai Chandra, Sri Naga Harshavardhan, Ruthvik Guptha, Anoop B.N. and <strong>Vipin Venugopal</strong>. <span class="title">IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs.</span> <span class="venue">Franklin Open</span>, Elsevier, vol. 13, p. 100439, December 2025.<span class="pill">Scopus Q3</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.fraope.2025.100439">DOI</a><button type="button" class="cite" data-cite="j7" aria-haspopup="dialog">Cite</button><a href="https://github.com/Blackmonarch4574/IlluC-Net-An-attention-guided-U-Net-for-illumination-correction-in-dermatological-macro-photographs">Code</a></div></li>
+        <li value="8">Mithun Kumar Kar, <strong>Vipin Venugopal</strong> and Anoop B.N. <span class="title">LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 177019-177035, November 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3621107">DOI</a><button type="button" class="cite" data-cite="j8" aria-haspopup="dialog">Cite</button><a href="https://github.com/VipinBioLab/LeSegGAN">Code</a></div></li>
+        <li value="9">Naveen K.V., Anoop B.N., Siju K.S., Mithun Kumar Kar and <strong>Vipin Venugopal</strong>. <span class="title">EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 79793-79804, May 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3566073">DOI</a><button type="button" class="cite" data-cite="j9" aria-haspopup="dialog">Cite</button><a href="https://github.com/Boredlambda/EffNet-SVM">Code</a></div></li>
+        <li value="10">K. Yamuna Devi, J. Shanmuga Priyan, P.G. Kuppusamy, Deepa Beeta Thiyam, <strong>Vipin Venugopal</strong> and Sathish Sankaran. <span class="title">Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy.</span> <span class="venue">Biomedical Signal Processing and Control</span>, Elsevier, vol. 104, June 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 4.9</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.bspc.2025.107558">DOI</a><button type="button" class="cite" data-cite="j10" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="11"><strong>Vipin Venugopal</strong>, Malaya Kumar Nath, Justin Joshep and M. Vipin Das. <span class="title">A deep learning-based illumination transform for devignetting photographs of dermatological lesions.</span> <span class="venue">Image and Vision Computing</span>, Elsevier, vol. 142, February 2024.<span class="pill">Scopus Q1</span><span class="pill">IF 4.7</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.imavis.2024.104909">DOI</a><button type="button" class="cite" data-cite="j11" aria-haspopup="dialog">Cite</button><a href="https://github.com/VipinBioLab/IECET">Code</a></div></li>
+        <li value="12"><strong>Vipin Venugopal</strong>, Navin Infant Raj, Malaya Kumar Nath and Norton Stephen. <span class="title">A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images.</span> <span class="venue">Decision Analytics Journal</span>, Elsevier, vol. 8, September 2023.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.dajour.2023.100278">DOI</a><button type="button" class="cite" data-cite="j12" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="13">Duggani Keerthana, <strong>Vipin Venugopal</strong>, Malaya Kumar Nath and Madhusudan Mishra. <span class="title">Hybrid convolutional neural networks with SVM classifier for classification of skin cancer.</span> <span class="venue">Biomedical Engineering Advances</span>, Elsevier, vol. 5, June 2023.
+          <div class="actions"><a href="https://doi.org/10.1016/j.bea.2022.100069">DOI</a><button type="button" class="cite" data-cite="j13" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="14"><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images.</span> <span class="venue">Computers in Biology and Medicine</span>, Elsevier, vol. 148, September 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 7.7</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.compbiomed.2022.105852">DOI</a><button type="button" class="cite" data-cite="j14" aria-haspopup="dialog">Cite</button><a href="https://github.com/VipinBioLab/DTP-Net">Code</a></div></li>
+        <li value="15"><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions.</span> <span class="venue">Computer Methods and Programs in Biomedicine</span>, Elsevier, vol. 222, July 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 6.1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.cmpb.2022.106935">DOI</a><button type="button" class="cite" data-cite="j15" aria-haspopup="dialog">Cite</button><a href="https://github.com/VipinBioLab/EMST">Code</a></div></li>
       </ol>
       <p class="empty none" id="journal-list-empty">No journal articles match that filter.</p>
     </section>
@@ -210,22 +316,26 @@ footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1p
       <h2>Selected conference proceedings</h2>
       <div class="filter"><label>Filter conference papers <input type="search" data-filter="conf-list" placeholder="Title, author, venue or year"></label></div>
       <ol class="pubs" id="conf-list">
-        <li>Anerud Thiyagarajan, Giri Prasath R., Kishor S. and <strong>Vipin Venugopal</strong>. <span class="title">A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images.</span> <span class="venue">IEEE RECCAP 2026</span>, IIT Palakkad, 22-24 May 2026.<span class="pill">Presented</span></li>
-        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery.</span> <span class="venue">CVIP 2025</span>, IIT Ropar, 10-13 December 2025.<span class="pill">Presented</span></li>
-        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker.</span> <span class="venue">Mind, Brain, and Consciousness Conference (MBCC) 2025</span>, IIT Mandi, 4-7 June 2025.<span class="pill">Presented</span></li>
-        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications.</span> <span class="venue">ICMOCE 2025</span>, IIT Bhubaneswar, 23-25 May 2025.<span class="pill">Presented</span></li>
-        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Optimum hyperbolic tangent function for MRI enhancement.</span> <span class="venue">SocProS 2025</span>, IIT Roorkee, 24-26 February 2025.
-          <div class="actions"><a href="https://doi.org/10.1007/978-981-95-4831-6_23">DOI</a></div></li>
-        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude.</span> <span class="venue">ICMC 2025</span>, IIT Bhilai, 9-11 January 2025.
-          <div class="actions"><a href="https://doi.org/10.1007/978-981-96-6351-4_21">DOI</a></div></li>
-        <li>Chowtapalle Anuraag Chetty, V.R. Simi, Justin Joseph and <strong>Vipin Venugopal</strong>. <span class="title">A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors.</span> <span class="venue">ICIM 2024</span>, Robinson College, University of Cambridge, 8-10 March 2024.
-          <div class="actions"><a href="https://doi.org/10.1007/978-3-031-64359-0_30">DOI</a></div></li>
-        <li>V. Vipin, M.K. Nath, V. Sreejith, N.F. Giji, A. Ramesh and M. Meera. <span class="title">Detection of melanoma using deep learning techniques: a review.</span> <span class="venue">ICCISc 2021</span>, Govt. Engineering College Idukki, 16-18 June 2021, pp. 1-8.
-          <div class="actions"><a href="https://doi.org/10.1109/ICCISc52257.2021.9484861">DOI</a></div></li>
-        <li>J. James, A. Pe, S. Vasu and V. Vipin. <span class="title">Application of residue number system in the generation of PN-sequences for CDMA systems.</span> <span class="venue">CoCoNet 2015</span>, IITMK Trivandrum, 16-19 December 2015, pp. 670-674.
-          <div class="actions"><a href="https://doi.org/10.1109/CoCoNet.2015.7411261">DOI</a></div></li>
-        <li>A. Pe, M. George, S. Vasu and V. Vipin. <span class="title">A study on solitons in optical communication systems.</span> <span class="venue">IEEE INDICON 2015</span>, Jamia Millia Islamia, New Delhi, 17-20 December 2015, pp. 1-6.
-          <div class="actions"><a href="https://doi.org/10.1109/INDICON.2015.7443469">DOI</a></div></li>
+        <li value="1">Anerud Thiyagarajan, Giri Prasath R., Kishor S. and <strong>Vipin Venugopal</strong>. <span class="title">A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images.</span> <span class="venue">IEEE RECCAP 2026</span>, IIT Palakkad, 22-24 May 2026.<span class="pill">Presented</span>
+          <div class="actions"><button type="button" class="cite" data-cite="c1" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="2">Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery.</span> <span class="venue">CVIP 2025</span>, IIT Ropar, 10-13 December 2025.<span class="pill">Presented</span>
+          <div class="actions"><button type="button" class="cite" data-cite="c2" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="3">Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker.</span> <span class="venue">Mind, Brain, and Consciousness Conference (MBCC) 2025</span>, IIT Mandi, 4-7 June 2025.<span class="pill">Presented</span>
+          <div class="actions"><button type="button" class="cite" data-cite="c3" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="4">Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications.</span> <span class="venue">ICMOCE 2025</span>, IIT Bhubaneswar, 23-25 May 2025.<span class="pill">Presented</span>
+          <div class="actions"><button type="button" class="cite" data-cite="c4" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="5">Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Optimum hyperbolic tangent function for MRI enhancement.</span> <span class="venue">SocProS 2025</span>, IIT Roorkee, 24-26 February 2025.
+          <div class="actions"><a href="https://doi.org/10.1007/978-981-95-4831-6_23">DOI</a><button type="button" class="cite" data-cite="c5" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="6">Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude.</span> <span class="venue">ICMC 2025</span>, IIT Bhilai, 9-11 January 2025.
+          <div class="actions"><a href="https://doi.org/10.1007/978-981-96-6351-4_21">DOI</a><button type="button" class="cite" data-cite="c6" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="7">Chowtapalle Anuraag Chetty, V.R. Simi, Justin Joseph and <strong>Vipin Venugopal</strong>. <span class="title">A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors.</span> <span class="venue">ICIM 2024</span>, Robinson College, University of Cambridge, 8-10 March 2024.
+          <div class="actions"><a href="https://doi.org/10.1007/978-3-031-64359-0_30">DOI</a><button type="button" class="cite" data-cite="c7" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="8">V. Vipin, M.K. Nath, V. Sreejith, N.F. Giji, A. Ramesh and M. Meera. <span class="title">Detection of melanoma using deep learning techniques: a review.</span> <span class="venue">ICCISc 2021</span>, Govt. Engineering College Idukki, 16-18 June 2021, pp. 1-8.
+          <div class="actions"><a href="https://doi.org/10.1109/ICCISc52257.2021.9484861">DOI</a><button type="button" class="cite" data-cite="c8" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="9">J. James, A. Pe, S. Vasu and V. Vipin. <span class="title">Application of residue number system in the generation of PN-sequences for CDMA systems.</span> <span class="venue">CoCoNet 2015</span>, IITMK Trivandrum, 16-19 December 2015, pp. 670-674.
+          <div class="actions"><a href="https://doi.org/10.1109/CoCoNet.2015.7411261">DOI</a><button type="button" class="cite" data-cite="c9" aria-haspopup="dialog">Cite</button></div></li>
+        <li value="10">A. Pe, M. George, S. Vasu and V. Vipin. <span class="title">A study on solitons in optical communication systems.</span> <span class="venue">IEEE INDICON 2015</span>, Jamia Millia Islamia, New Delhi, 17-20 December 2015, pp. 1-6.
+          <div class="actions"><a href="https://doi.org/10.1109/INDICON.2015.7443469">DOI</a><button type="button" class="cite" data-cite="c10" aria-haspopup="dialog">Cite</button></div></li>
       </ol>
       <p class="empty none" id="conf-list-empty">No conference papers match that filter.</p>
     </section>
@@ -307,6 +417,23 @@ footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1p
   </main>
 </div>
 
+<dialog id="citeDialog" class="cite-dialog" aria-labelledby="citeHeading">
+  <div class="cite-head">
+    <h3 id="citeHeading">Cite this paper</h3>
+    <button type="button" class="cite-x" id="citeClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="cite-tabs" role="group" aria-label="Citation format">
+    <button type="button" id="tabBib" aria-selected="true">BibTeX</button>
+    <button type="button" id="tabTxt" aria-selected="false">Plain text</button>
+  </div>
+  <textarea id="citeText" readonly aria-label="Citation text"></textarea>
+  <div class="cite-actions">
+    <button type="button" id="citeCopy">Copy</button>
+    <button type="button" class="alt" id="citeDownload">Download</button>
+    <span id="citeStatus" role="status"></span>
+  </div>
+</dialog>
+
 <script>
 /* Year */
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -339,6 +466,25 @@ document.querySelectorAll('input[data-filter]').forEach(function(input){
   });
 });
 
+/* Google Scholar metrics, refreshed weekly by scripts/fetch_scholar.py */
+fetch('scholar.json', { cache: 'no-cache' })
+  .then(function(r){ return r.ok ? r.json() : null; })
+  .then(function(d){
+    if (!d || typeof d.citations !== 'number') return;
+    var n = new Intl.NumberFormat('en-IN');
+    document.getElementById('sch-cit').textContent = n.format(d.citations);
+    document.getElementById('sch-h').textContent = d.h_index;
+    document.getElementById('sch-i10').textContent = d.i10_index;
+    if (d.profile) document.getElementById('sch-link').href = d.profile;
+    if (d.updated) {
+      var dt = new Date(d.updated + 'T00:00:00');
+      document.getElementById('sch-date').textContent =
+        dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    document.getElementById('scholar').hidden = false;
+  })
+  .catch(function(){ /* leave the strip hidden */ });
+
 /* Active section in the side navigation */
 (function(){
   var links = document.querySelectorAll('nav a');
@@ -353,6 +499,193 @@ document.querySelectorAll('input[data-filter]').forEach(function(input){
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   document.querySelectorAll('main section').forEach(function(s){ io.observe(s); });
+})();
+
+/* Citation dialog */
+(function(){
+  var CITES = {
+ "j1": {
+  "key": "mathur2026oct",
+  "bib": "@article{mathur2026oct,\n  author = {Mathur, Manan and Niyas, S. and Venugopal, Vipin and Raghavendra, S. and Mathew, Terry Jacob and Kothari, Abhishek R. and Anoop, B. N.},\n  title = {{Effective deep learning framework for retinal abnormality detection in OCT imaging}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {14},\n  pages = {131943--131958},\n  month = sep,\n  year = {2026},\n  doi = {10.1109/ACCESS.2026.3724989},\n  url = {https://doi.org/10.1109/ACCESS.2026.3724989}\n}",
+  "txt": "Manan Mathur, S. Niyas, Vipin Venugopal, S. Raghavendra, Terry Jacob Mathew, Abhishek R. Kothari and B.N. Anoop, \"Effective deep learning framework for retinal abnormality detection in OCT imaging,\" IEEE Access, IEEE, vol. 14, pp. 131943-131958, Sep. 2026, doi: 10.1109/ACCESS.2026.3724989."
+ },
+ "j2": {
+  "key": "anandakrishnan2026flood",
+  "bib": "@article{anandakrishnan2026flood,\n  author = {Anandakrishnan, Jayakrishnan and Mohan, Alkha and Venugopal, Vipin and Jiang, Weiwei and Rahman, Mohd Amiruddin Abd and Khan, Jawad},\n  title = {{Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  month = aug,\n  year = {2026},\n  doi = {10.1109/ACCESS.2026.3709031},\n  url = {https://doi.org/10.1109/ACCESS.2026.3709031}\n}",
+  "txt": "Jayakrishnan Anandakrishnan, Alkha Mohan, Vipin Venugopal, Weiwei Jiang, Mohd Amiruddin Abd Rahman and Jawad Khan, \"Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification,\" IEEE Access, IEEE, Aug. 2026, doi: 10.1109/ACCESS.2026.3709031."
+ },
+ "j3": {
+  "key": "siju2026saga",
+  "bib": "@article{siju2026saga,\n  author = {Siju, K. S. and Venugopal, Vipin and Kar, Mithun Kumar and Anandakrishnan, Jayakrishnan},\n  title = {{An interpretable deep learning method for medical image deblurring and restoration}},\n  journal = {Healthcare Analytics},\n  publisher = {Elsevier},\n  volume = {9},\n  pages = {100468},\n  month = jun,\n  year = {2026},\n  doi = {10.1016/j.health.2026.100468},\n  url = {https://doi.org/10.1016/j.health.2026.100468}\n}",
+  "txt": "Siju K.S., Vipin Venugopal, Mithun Kumar Kar and Jayakrishnan Anandakrishnan, \"An interpretable deep learning method for medical image deblurring and restoration,\" Healthcare Analytics, Elsevier, vol. 9, art. 100468, Jun. 2026, doi: 10.1016/j.health.2026.100468."
+ },
+ "j4": {
+  "key": "siju2026xgan",
+  "bib": "@article{siju2026xgan,\n  author = {Siju, K. S. and Venugopal, Vipin and Sowmya, V. and Kar, Mithun Kumar},\n  title = {{X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising}},\n  journal = {Computer Methods and Programs in Biomedicine Update},\n  publisher = {Elsevier},\n  volume = {9},\n  pages = {100247},\n  month = jun,\n  year = {2026},\n  doi = {10.1016/j.cmpbup.2026.100247},\n  url = {https://doi.org/10.1016/j.cmpbup.2026.100247}\n}",
+  "txt": "Siju K.S., Vipin Venugopal, V. Sowmya and Mithun Kumar Kar, \"X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising,\" Computer Methods and Programs in Biomedicine Update, Elsevier, vol. 9, art. 100247, Jun. 2026, doi: 10.1016/j.cmpbup.2026.100247."
+ },
+ "j5": {
+  "key": "devi2026angio",
+  "bib": "@article{devi2026angio,\n  author = {Devi, K. Yamuna and Bobby, J. Sofia and Vinurajkumar, S. and Venugopal, Vipin},\n  title = {{A metaheuristics-equipped post-processing model for coronary angiograms}},\n  journal = {Radiography},\n  publisher = {Elsevier},\n  volume = {32},\n  pages = {103355},\n  month = may,\n  year = {2026},\n  doi = {10.1016/j.radi.2026.103355},\n  url = {https://doi.org/10.1016/j.radi.2026.103355}\n}",
+  "txt": "K. Yamuna Devi, J. Sofia Bobby, S. Vinurajkumar and Vipin Venugopal, \"A metaheuristics-equipped post-processing model for coronary angiograms,\" Radiography, Elsevier, vol. 32, art. 103355, May 2026, doi: 10.1016/j.radi.2026.103355."
+ },
+ "j6": {
+  "key": "sathish2025curiosity",
+  "bib": "@article{sathish2025curiosity,\n  author = {Sathish, S. and Shanmugapriyan, J. and Kumar, R. Praveen and Vinurajkumar, S. and Venugopal, Vipin},\n  title = {{Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover}},\n  journal = {Earth Science Informatics},\n  publisher = {Springer Nature},\n  volume = {19},\n  pages = {6},\n  month = dec,\n  year = {2025},\n  doi = {10.1007/s12145-025-02052-z},\n  url = {https://doi.org/10.1007/s12145-025-02052-z}\n}",
+  "txt": "S. Sathish, J. Shanmugapriyan, R. Praveen Kumar, S. Vinurajkumar and Vipin Venugopal, \"Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover,\" Earth Science Informatics, Springer Nature, vol. 19, art. 6, Dec. 2025, doi: 10.1007/s12145-025-02052-z."
+ },
+ "j7": {
+  "key": "adithya2025illucnet",
+  "bib": "@article{adithya2025illucnet,\n  author = {Adithya, Likith and Chandra, Gowtham Sai and Harshavardhan, Sri Naga and Guptha, Ruthvik and Anoop, B. N. and Venugopal, Vipin},\n  title = {{IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs}},\n  journal = {Franklin Open},\n  publisher = {Elsevier},\n  volume = {13},\n  pages = {100439},\n  month = dec,\n  year = {2025},\n  doi = {10.1016/j.fraope.2025.100439},\n  url = {https://doi.org/10.1016/j.fraope.2025.100439}\n}",
+  "txt": "Likith Adithya, Gowtham Sai Chandra, Sri Naga Harshavardhan, Ruthvik Guptha, Anoop B.N. and Vipin Venugopal, \"IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs,\" Franklin Open, Elsevier, vol. 13, p. 100439, Dec. 2025, doi: 10.1016/j.fraope.2025.100439."
+ },
+ "j8": {
+  "key": "kar2025lesseggan",
+  "bib": "@article{kar2025lesseggan,\n  author = {Kar, Mithun Kumar and Venugopal, Vipin and Anoop, B. N.},\n  title = {{LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {13},\n  pages = {177019--177035},\n  month = nov,\n  year = {2025},\n  doi = {10.1109/ACCESS.2025.3621107},\n  url = {https://doi.org/10.1109/ACCESS.2025.3621107}\n}",
+  "txt": "Mithun Kumar Kar, Vipin Venugopal and Anoop B.N., \"LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images,\" IEEE Access, IEEE, vol. 13, pp. 177019-177035, Nov. 2025, doi: 10.1109/ACCESS.2025.3621107."
+ },
+ "j9": {
+  "key": "naveen2025effnetsvm",
+  "bib": "@article{naveen2025effnetsvm,\n  author = {Naveen, K. V. and Anoop, B. N. and Siju, K. S. and Kar, Mithun Kumar and Venugopal, Vipin},\n  title = {{EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {13},\n  pages = {79793--79804},\n  month = may,\n  year = {2025},\n  doi = {10.1109/ACCESS.2025.3566073},\n  url = {https://doi.org/10.1109/ACCESS.2025.3566073}\n}",
+  "txt": "Naveen K.V., Anoop B.N., Siju K.S., Mithun Kumar Kar and Vipin Venugopal, \"EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images,\" IEEE Access, IEEE, vol. 13, pp. 79793-79804, May 2025, doi: 10.1109/ACCESS.2025.3566073."
+ },
+ "j10": {
+  "key": "devi2025wce",
+  "bib": "@article{devi2025wce,\n  author = {Devi, K. Yamuna and Priyan, J. Shanmuga and Kuppusamy, P. G. and Thiyam, Deepa Beeta and Venugopal, Vipin and Sankaran, Sathish},\n  title = {{Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy}},\n  journal = {Biomedical Signal Processing and Control},\n  publisher = {Elsevier},\n  volume = {104},\n  month = jun,\n  year = {2025},\n  doi = {10.1016/j.bspc.2025.107558},\n  url = {https://doi.org/10.1016/j.bspc.2025.107558}\n}",
+  "txt": "K. Yamuna Devi, J. Shanmuga Priyan, P.G. Kuppusamy, Deepa Beeta Thiyam, Vipin Venugopal and Sathish Sankaran, \"Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy,\" Biomedical Signal Processing and Control, Elsevier, vol. 104, Jun. 2025, doi: 10.1016/j.bspc.2025.107558."
+ },
+ "j11": {
+  "key": "venugopal2024iecet",
+  "bib": "@article{venugopal2024iecet,\n  author = {Venugopal, Vipin and Nath, Malaya Kumar and Joshep, Justin and Das, M. Vipin},\n  title = {{A deep learning-based illumination transform for devignetting photographs of dermatological lesions}},\n  journal = {Image and Vision Computing},\n  publisher = {Elsevier},\n  volume = {142},\n  month = feb,\n  year = {2024},\n  doi = {10.1016/j.imavis.2024.104909},\n  url = {https://doi.org/10.1016/j.imavis.2024.104909}\n}",
+  "txt": "Vipin Venugopal, Malaya Kumar Nath, Justin Joshep and M. Vipin Das, \"A deep learning-based illumination transform for devignetting photographs of dermatological lesions,\" Image and Vision Computing, Elsevier, vol. 142, Feb. 2024, doi: 10.1016/j.imavis.2024.104909."
+ },
+ "j12": {
+  "key": "venugopal2023effnetskin",
+  "bib": "@article{venugopal2023effnetskin,\n  author = {Venugopal, Vipin and Raj, Navin Infant and Nath, Malaya Kumar and Stephen, Norton},\n  title = {{A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images}},\n  journal = {Decision Analytics Journal},\n  publisher = {Elsevier},\n  volume = {8},\n  month = sep,\n  year = {2023},\n  doi = {10.1016/j.dajour.2023.100278},\n  url = {https://doi.org/10.1016/j.dajour.2023.100278}\n}",
+  "txt": "Vipin Venugopal, Navin Infant Raj, Malaya Kumar Nath and Norton Stephen, \"A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images,\" Decision Analytics Journal, Elsevier, vol. 8, Sep. 2023, doi: 10.1016/j.dajour.2023.100278."
+ },
+ "j13": {
+  "key": "keerthana2023hybridcnn",
+  "bib": "@article{keerthana2023hybridcnn,\n  author = {Keerthana, Duggani and Venugopal, Vipin and Nath, Malaya Kumar and Mishra, Madhusudan},\n  title = {{Hybrid convolutional neural networks with SVM classifier for classification of skin cancer}},\n  journal = {Biomedical Engineering Advances},\n  publisher = {Elsevier},\n  volume = {5},\n  month = jun,\n  year = {2023},\n  doi = {10.1016/j.bea.2022.100069},\n  url = {https://doi.org/10.1016/j.bea.2022.100069}\n}",
+  "txt": "Duggani Keerthana, Vipin Venugopal, Malaya Kumar Nath and Madhusudan Mishra, \"Hybrid convolutional neural networks with SVM classifier for classification of skin cancer,\" Biomedical Engineering Advances, Elsevier, vol. 5, Jun. 2023, doi: 10.1016/j.bea.2022.100069."
+ },
+ "j14": {
+  "key": "venugopal2022dtpnet",
+  "bib": "@article{venugopal2022dtpnet,\n  author = {Venugopal, Vipin and Joshep, Justin and Das, M. Vipin and Nath, Malaya Kumar},\n  title = {{DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images}},\n  journal = {Computers in Biology and Medicine},\n  publisher = {Elsevier},\n  volume = {148},\n  month = sep,\n  year = {2022},\n  doi = {10.1016/j.compbiomed.2022.105852},\n  url = {https://doi.org/10.1016/j.compbiomed.2022.105852}\n}",
+  "txt": "Vipin Venugopal, Justin Joshep, M. Vipin Das and Malaya Kumar Nath, \"DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images,\" Computers in Biology and Medicine, Elsevier, vol. 148, Sep. 2022, doi: 10.1016/j.compbiomed.2022.105852."
+ },
+ "j15": {
+  "key": "venugopal2022emst",
+  "bib": "@article{venugopal2022emst,\n  author = {Venugopal, Vipin and Joshep, Justin and Das, M. Vipin and Nath, Malaya Kumar},\n  title = {{An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions}},\n  journal = {Computer Methods and Programs in Biomedicine},\n  publisher = {Elsevier},\n  volume = {222},\n  month = jul,\n  year = {2022},\n  doi = {10.1016/j.cmpb.2022.106935},\n  url = {https://doi.org/10.1016/j.cmpb.2022.106935}\n}",
+  "txt": "Vipin Venugopal, Justin Joshep, M. Vipin Das and Malaya Kumar Nath, \"An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions,\" Computer Methods and Programs in Biomedicine, Elsevier, vol. 222, Jul. 2022, doi: 10.1016/j.cmpb.2022.106935."
+ },
+ "c1": {
+  "key": "thiyagarajan2026reccap",
+  "bib": "@inproceedings{thiyagarajan2026reccap,\n  author = {Thiyagarajan, Anerud and Prasath, Giri R. and Kishor, S. and Venugopal, Vipin},\n  title = {{A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images}},\n  booktitle = {IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026)},\n  address = {IIT Palakkad, India},\n  month = may,\n  year = {2026}\n}",
+  "txt": "Anerud Thiyagarajan, Giri Prasath R., Kishor S. and Vipin Venugopal, \"A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images,\" in IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026), IIT Palakkad, India, May 2026."
+ },
+ "c2": {
+  "key": "simi2025cvip",
+  "bib": "@inproceedings{simi2025cvip,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery}},\n  booktitle = {10th International Conference on Computer Vision and Image Processing (CVIP 2025)},\n  address = {IIT Ropar, India},\n  month = dec,\n  year = {2025}\n}",
+  "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery,\" in 10th International Conference on Computer Vision and Image Processing (CVIP 2025), IIT Ropar, India, Dec. 2025."
+ },
+ "c3": {
+  "key": "simi2025mbcc",
+  "bib": "@inproceedings{simi2025mbcc,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker}},\n  booktitle = {Mind, Brain, and Consciousness Conference (MBCC 2025)},\n  address = {IIT Mandi, India},\n  month = jun,\n  year = {2025}\n}",
+  "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker,\" in Mind, Brain, and Consciousness Conference (MBCC 2025), IIT Mandi, India, Jun. 2025."
+ },
+ "c4": {
+  "key": "simi2025icmoce",
+  "bib": "@inproceedings{simi2025icmoce,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications}},\n  booktitle = {3rd International Conference on Microwave, Optical and Communication Engineering (ICMOCE 2025)},\n  address = {IIT Bhubaneswar, India},\n  month = may,\n  year = {2025}\n}",
+  "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications,\" in 3rd International Conference on Microwave, Optical and Communication Engineering (ICMOCE 2025), IIT Bhubaneswar, India, May 2025."
+ },
+ "c5": {
+  "key": "simi2025socpros",
+  "bib": "@inproceedings{simi2025socpros,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Optimum hyperbolic tangent function for MRI enhancement}},\n  booktitle = {13th International Conference on Soft Computing for Problem Solving (SocProS 2025)},\n  address = {IIT Roorkee, India},\n  month = feb,\n  year = {2025},\n  doi = {10.1007/978-981-95-4831-6_23},\n  url = {https://doi.org/10.1007/978-981-95-4831-6_23}\n}",
+  "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Optimum hyperbolic tangent function for MRI enhancement,\" in 13th International Conference on Soft Computing for Problem Solving (SocProS 2025), IIT Roorkee, India, Feb. 2025, doi: 10.1007/978-981-95-4831-6_23."
+ },
+ "c6": {
+  "key": "simi2025icmc",
+  "bib": "@inproceedings{simi2025icmc,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude}},\n  booktitle = {11th International Conference on Mathematics and Computing (ICMC 2025)},\n  address = {IIT Bhilai, India},\n  month = jan,\n  year = {2025},\n  doi = {10.1007/978-981-96-6351-4_21},\n  url = {https://doi.org/10.1007/978-981-96-6351-4_21}\n}",
+  "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude,\" in 11th International Conference on Mathematics and Computing (ICMC 2025), IIT Bhilai, India, Jan. 2025, doi: 10.1007/978-981-96-6351-4_21."
+ },
+ "c7": {
+  "key": "chetty2024icim",
+  "bib": "@inproceedings{chetty2024icim,\n  author = {Chetty, Chowtapalle Anuraag and Simi, V. R. and Joseph, Justin and Venugopal, Vipin},\n  title = {{A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors}},\n  booktitle = {10th International Conference on Information Management (ICIM 2024)},\n  address = {Robinson College, University of Cambridge, UK},\n  month = mar,\n  year = {2024},\n  doi = {10.1007/978-3-031-64359-0_30},\n  url = {https://doi.org/10.1007/978-3-031-64359-0_30}\n}",
+  "txt": "Chowtapalle Anuraag Chetty, V.R. Simi, Justin Joseph and Vipin Venugopal, \"A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors,\" in 10th International Conference on Information Management (ICIM 2024), Robinson College, University of Cambridge, UK, Mar. 2024, doi: 10.1007/978-3-031-64359-0_30."
+ },
+ "c8": {
+  "key": "vipin2021iccisc",
+  "bib": "@inproceedings{vipin2021iccisc,\n  author = {Vipin, V. and Nath, M. K. and Sreejith, V. and Giji, N. F. and Ramesh, A. and Meera, M.},\n  title = {{Detection of melanoma using deep learning techniques: a review}},\n  booktitle = {2021 International Conference on Communication, Control and Information Sciences (ICCISc)},\n  address = {Govt. Engineering College Idukki, India},\n  pages = {1--8},\n  month = jun,\n  year = {2021},\n  doi = {10.1109/ICCISc52257.2021.9484861},\n  url = {https://doi.org/10.1109/ICCISc52257.2021.9484861}\n}",
+  "txt": "V. Vipin, M.K. Nath, V. Sreejith, N.F. Giji, A. Ramesh and M. Meera, \"Detection of melanoma using deep learning techniques: a review,\" in 2021 International Conference on Communication, Control and Information Sciences (ICCISc), Govt. Engineering College Idukki, India, Jun. 2021, pp. 1-8, doi: 10.1109/ICCISc52257.2021.9484861."
+ },
+ "c9": {
+  "key": "james2015coconet",
+  "bib": "@inproceedings{james2015coconet,\n  author = {James, J. and Pe, A. and Vasu, S. and Vipin, V.},\n  title = {{Application of residue number system in the generation of PN-sequences for CDMA systems}},\n  booktitle = {International Conference on Computing and Network Communications (CoCoNet)},\n  address = {IITMK Trivandrum, India},\n  pages = {670--674},\n  month = dec,\n  year = {2015},\n  doi = {10.1109/CoCoNet.2015.7411261},\n  url = {https://doi.org/10.1109/CoCoNet.2015.7411261}\n}",
+  "txt": "J. James, A. Pe, S. Vasu and V. Vipin, \"Application of residue number system in the generation of PN-sequences for CDMA systems,\" in International Conference on Computing and Network Communications (CoCoNet), IITMK Trivandrum, India, Dec. 2015, pp. 670-674, doi: 10.1109/CoCoNet.2015.7411261."
+ },
+ "c10": {
+  "key": "pe2015indicon",
+  "bib": "@inproceedings{pe2015indicon,\n  author = {Pe, A. and George, M. and Vasu, S. and Vipin, V.},\n  title = {{A study on solitons in optical communication systems}},\n  booktitle = {2015 Annual IEEE India Conference (INDICON)},\n  address = {Jamia Millia Islamia, New Delhi, India},\n  pages = {1--6},\n  month = dec,\n  year = {2015},\n  doi = {10.1109/INDICON.2015.7443469},\n  url = {https://doi.org/10.1109/INDICON.2015.7443469}\n}",
+  "txt": "A. Pe, M. George, S. Vasu and V. Vipin, \"A study on solitons in optical communication systems,\" in 2015 Annual IEEE India Conference (INDICON), Jamia Millia Islamia, New Delhi, India, Dec. 2015, pp. 1-6, doi: 10.1109/INDICON.2015.7443469."
+ }
+};
+  var dlg = document.getElementById('citeDialog'),
+      box = document.getElementById('citeText'),
+      tabB = document.getElementById('tabBib'),
+      tabT = document.getElementById('tabTxt'),
+      status = document.getElementById('citeStatus');
+  var cur = null, mode = 'bib';
+  function render(){
+    box.value = CITES[cur][mode];
+    tabB.setAttribute('aria-selected', mode === 'bib');
+    tabT.setAttribute('aria-selected', mode === 'txt');
+    status.textContent = '';
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('button.cite');
+    if (!b) return;
+    cur = b.getAttribute('data-cite'); mode = 'bib'; render();
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+  });
+  tabB.addEventListener('click', function(){ mode = 'bib'; render(); });
+  tabT.addEventListener('click', function(){ mode = 'txt'; render(); });
+  document.getElementById('citeClose').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+  document.getElementById('citeCopy').addEventListener('click', function(){
+    function done(ok){ status.textContent = ok ? 'Copied' : 'Press Ctrl+C to copy'; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(box.value).then(function(){ done(true); }, function(){ box.select(); done(false); });
+    } else { box.select(); try { done(document.execCommand('copy')); } catch(err){ done(false); } }
+  });
+  document.getElementById('citeDownload').addEventListener('click', function(){
+    var blob = new Blob([box.value + '\n'], {type:'text/plain;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = CITES[cur].key + (mode === 'bib' ? '.bib' : '.txt');
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+    status.textContent = 'Downloaded';
+  });
+})();
+/* end citation dialog */
+/* Google Scholar numbers, refreshed weekly by a GitHub Action into scholar.json */
+(function(){
+  var box = document.getElementById('metrics');
+  if (!box || !window.fetch) return;
+  fetch('scholar.json', { cache: 'no-cache' })
+    .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(d){
+      if (!d || !d.citations || !d.h_index) return;   // stay hidden until real numbers exist
+      document.getElementById('m-cit').textContent = Number(d.citations).toLocaleString('en-IN');
+      document.getElementById('m-h').textContent = d.h_index;
+      document.getElementById('m-i10').textContent = d.i10_index;
+      var when = d.updated ? new Date(d.updated + 'T00:00:00') : null;
+      document.getElementById('m-date').textContent = when && !isNaN(when)
+        ? when.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : 'recently';
+      box.hidden = false;
+    })
+    .catch(function(){ /* leave the strip hidden if the file is missing */ });
 })();
 
 </script>
