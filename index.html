@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Vipin Venugopal | Medical Image Processing and Deep Learning</title>
+<meta name="description" content="Dr. Vipin Venugopal, Assistant Professor (Selection Grade), Amrita School of Artificial Intelligence. Deep learning and computer vision researcher, open to collaboration and consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F5F8;
+  --panel:#E6EBF0;
+  --ink:#17222E;
+  --muted:#55636F;
+  --rule:#CFD7DF;
+  --accent:#3A44A8;
+  --accent-ink:#2B3385;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101720;
+    --panel:#19222D;
+    --ink:#E4EAF0;
+    --muted:#9AA8B5;
+    --rule:#2A3644;
+    --accent:#9AA5FF;
+    --accent-ink:#B9C1FF;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101720;
+  --panel:#19222D;
+  --ink:#E4EAF0;
+  --muted:#9AA8B5;
+  --rule:#2A3644;
+  --accent:#9AA5FF;
+  --accent-ink:#B9C1FF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:1.125rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:.5rem 1rem;z-index:10}
+.skip:focus{left:0}
+
+.shell{max-width:1120px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:230px minmax(0,1fr);gap:4rem}
+aside{position:sticky;top:0;align-self:start;padding:3rem 0;height:100vh;display:flex;flex-direction:column;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.2;margin:0 0 .25rem}
+.brand a{color:var(--ink);text-decoration:none}
+.tagline{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 2rem}
+nav ul{list-style:none;margin:0;padding:0;font-family:var(--sans);font-size:.95rem}
+nav a{display:block;padding:.3rem 0 .3rem .9rem;color:var(--muted);text-decoration:none;border-left:2px solid var(--rule)}
+nav a:hover,nav a.on{color:var(--ink);border-left-color:var(--accent)}
+.theme{font-family:var(--sans);font-size:.85rem;background:none;border:1px solid var(--rule);color:var(--muted);padding:.35rem .7rem;border-radius:4px;cursor:pointer;align-self:flex-start}
+.theme:hover{color:var(--ink);border-color:var(--muted)}
+
+main{padding:3rem 0 5rem;min-width:0}
+section{padding:0 0 3.5rem;scroll-margin-top:2rem}
+h1,h2,h3{font-weight:600;line-height:1.2;margin:0}
+h1{font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:-.015em;font-variation-settings:"opsz" 72}
+h2{font-size:1.75rem;margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule)}
+h3{font-size:1.15rem;margin:1.75rem 0 .6rem}
+p{margin:0 0 1rem;max-width:64ch}
+.role{font-size:1.2rem;margin:.9rem 0 .2rem}
+.affil{font-family:var(--sans);font-size:.95rem;color:var(--muted);margin:0 0 1.5rem;max-width:none}
+.lede{font-size:1.2rem;line-height:1.55;max-width:62ch}
+
+/* Lists */
+.links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem 1.5rem}
+.themes{padding-left:1.1rem;margin:0 0 1rem;max-width:64ch}
+.themes li{margin-bottom:.35rem}
+.filter{font-family:var(--sans);margin:0 0 1rem}
+.filter input{font:inherit;font-size:.95rem;padding:.5rem .75rem;width:100%;max-width:340px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:4px}
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{padding:1rem 0;border-bottom:1px solid var(--rule);font-size:1.02rem;line-height:1.55}
+.pubs li:last-child{border-bottom:0}
+.pubs .title{font-weight:600}
+.pubs .venue{font-style:italic}
+.meta{font-family:var(--sans);font-size:.88rem;color:var(--muted);display:block;margin-top:.25rem}
+.pill{font-family:var(--sans);font-size:.78rem;border:1px solid var(--rule);border-radius:99px;padding:.05rem .55rem;margin-left:.35rem;color:var(--muted);white-space:nowrap}
+.actions{display:flex;flex-wrap:wrap;gap:.9rem;font-family:var(--sans);font-size:.9rem;margin-top:.4rem}
+.none{display:none}
+.empty{font-family:var(--sans);color:var(--muted)}
+details{border-top:1px solid var(--rule);padding:.8rem 0}
+details:last-of-type{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;font-weight:600;font-size:1.05rem}
+details ul{margin:.8rem 0 0;padding-left:1.2rem;font-size:1rem}
+details li{margin-bottom:.3rem}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--rule)}
+.timeline li:last-child{border-bottom:0}
+.when{font-family:var(--sans);font-size:.9rem;color:var(--muted);padding-top:.15rem}
+.timeline .what{font-weight:600}
+.timeline .where,.timeline .note{display:block;font-size:1rem}
+.timeline .note{color:var(--muted);font-style:italic}
+footer{font-family:var(--sans);font-size:.85rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:1fr;gap:0}
+  aside{position:static;height:auto;padding:1.75rem 0 1rem}
+  nav ul{display:flex;flex-wrap:wrap;gap:.25rem 1.1rem}
+  nav a{border-left:0;padding:.2rem 0;border-bottom:2px solid transparent}
+  nav a:hover,nav a.on{border-bottom-color:var(--accent)}
+  .theme{margin-top:1rem}
+  main{padding-top:1.5rem}
+  .timeline li{grid-template-columns:1fr;gap:.1rem}
+}
+@media print{aside .theme,nav,.filter{display:none}.shell{display:block}aside{position:static;height:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <aside>
+    <div>
+      <p class="brand"><a href="#top">Vipin Venugopal</a></p>
+      <p class="tagline">Medical image processing and deep learning</p>
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#journals">Journal articles</a></li>
+          <li><a href="#conferences">Conferences</a></li>
+          <li><a href="#patent">Patent</a></li>
+          <li><a href="#service">Peer review</a></li>
+          <li><a href="#background">Education and experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button class="theme" id="theme" type="button" aria-label="Switch between light and dark theme">Switch theme</button>
+  </aside>
+
+  <main id="main">
+    <section id="about">
+      <h1 id="top">Dr. Vipin Venugopal</h1>
+      <p class="role">Assistant Professor (Selection Grade)</p>
+      <p class="affil">Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore, Tamil Nadu 641 112, India</p>
+      <p class="lede">An accomplished Artificial Intelligence (AI) and Deep Learning researcher with 15 years of academic experience and a Ph.D. specializing in computational modeling. My expertise lies in developing novel deep learning algorithms and AI-driven diagnostic tools, with a focus on computer vision applications.</p>
+      <p>I have a proven record of publishing in high-impact Q1 journals and a passion for mentoring students in cutting-edge AI technologies.</p>
+      <p>I welcome collaborative research and consultation projects in computer vision. <a href="#contact">Get in touch</a>.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>My work sits between biomedical imaging, signal processing and machine learning. Current themes:</p>
+      <ul class="themes">
+        <li>Image restoration and enhancement: deblurring, denoising, illumination correction and contrast enhancement</li>
+        <li>Dermatological image analysis: skin cancer detection and lesion segmentation</li>
+        <li>Biomedical signal processing and wearable biomedical sensors and systems</li>
+        <li>Neural networks and deep learning for diagnosis support</li>
+      </ul>
+      <h3>Profiles</h3>
+      <ul class="links">
+        <li><a href="https://scholar.google.co.th/citations?user=N0hHzvsAAAAJ&amp;hl=en">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0002-1959-6452">ORCID</a></li>
+        <li><a href="https://www.scopus.com/authid/detail.uri?authorId=57227676500">Scopus (57227676500)</a></li>
+        <li><a href="https://www.webofscience.com/wos/author/record/2372905">Web of Science (AAY-6940-2021)</a></li>
+        <li><a href="https://github.com/VipinBioLab">GitHub</a></li>
+      </ul>
+    </section>
+
+    <section id="journals">
+      <h2>Selected journal articles</h2>
+      <div class="filter"><label>Filter publications <input type="search" data-filter="journal-list" placeholder="Title, author, venue or year"></label></div>
+      <ol class="pubs" id="journal-list">
+        <li>Siju K.S., <strong>Vipin Venugopal</strong>, Mithun Kumar Kar and Jayakrishnan Anandakrishnan. <span class="title">An interpretable deep learning method for medical image deblurring and restoration.</span> <span class="venue">Healthcare Analytics</span>, Elsevier, vol. 9, art. 100468, June 2026.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.health.2026.100468">DOI</a><a href="https://github.com/sijuswamyresearch/SAGA">Code</a></div></li>
+        <li>Siju K.S., <strong>Vipin Venugopal</strong>, V. Sowmya and Mithun Kumar Kar. <span class="title">X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising.</span> <span class="venue">Computer Methods and Programs in Biomedicine Update</span>, Elsevier, vol. 9, art. 100247, June 2026.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.cmpbup.2026.100247">DOI</a><a href="https://github.com/sijuswamyresearch/X-GAN">Code</a></div></li>
+        <li>K. Yamuna Devi, J. Sofia Bobby, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">A metaheuristics-equipped post-processing model for coronary angiograms.</span> <span class="venue">Radiography</span>, Elsevier, vol. 32, art. 103355, May 2026.<span class="pill">Scopus Q1</span><span class="pill">IF 2.8</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.radi.2026.103355">DOI</a></div></li>
+        <li>S. Sathish, J. Shanmugapriyan, R. Praveen Kumar, S. Vinurajkumar and <strong>Vipin Venugopal</strong>. <span class="title">Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover.</span> <span class="venue">Earth Science Informatics</span>, Springer Nature, vol. 19, art. 6, December 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.1</span>
+          <div class="actions"><a href="https://doi.org/10.1007/s12145-025-02052-z">DOI</a></div></li>
+        <li>Likith Adithya, Gowtham Sai Chandra, Sri Naga Harshavardhan, Ruthvik Guptha, Anoop B.N. and <strong>Vipin Venugopal</strong>. <span class="title">IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs.</span> <span class="venue">Franklin Open</span>, Elsevier, vol. 13, p. 100439, December 2025.<span class="pill">Scopus Q3</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.fraope.2025.100439">DOI</a><a href="https://github.com/Blackmonarch4574/IlluC-Net-An-attention-guided-U-Net-for-illumination-correction-in-dermatological-macro-photographs">Code</a></div></li>
+        <li>Mithun Kumar Kar, <strong>Vipin Venugopal</strong> and Anoop B.N. <span class="title">LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 177019-177035, November 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3621107">DOI</a><a href="https://github.com/VipinBioLab/LeSegGAN">Code</a></div></li>
+        <li>Naveen K.V., Anoop B.N., Siju K.S., Mithun Kumar Kar and <strong>Vipin Venugopal</strong>. <span class="title">EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images.</span> <span class="venue">IEEE Access</span>, vol. 13, pp. 79793-79804, May 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 3.6</span>
+          <div class="actions"><a href="https://doi.org/10.1109/ACCESS.2025.3566073">DOI</a><a href="https://github.com/Boredlambda/EffNet-SVM">Code</a></div></li>
+        <li>K. Yamuna Devi, J. Shanmuga Priyan, P.G. Kuppusamy, Deepa Beeta Thiyam, <strong>Vipin Venugopal</strong> and Sathish Sankaran. <span class="title">Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy.</span> <span class="venue">Biomedical Signal Processing and Control</span>, Elsevier, vol. 104, June 2025.<span class="pill">Scopus Q1</span><span class="pill">IF 4.9</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.bspc.2025.107558">DOI</a></div></li>
+        <li><strong>Vipin Venugopal</strong>, Malaya Kumar Nath, Justin Joshep and M. Vipin Das. <span class="title">A deep learning-based illumination transform for devignetting photographs of dermatological lesions.</span> <span class="venue">Image and Vision Computing</span>, Elsevier, vol. 142, February 2024.<span class="pill">Scopus Q1</span><span class="pill">IF 4.7</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.imavis.2024.104909">DOI</a><a href="https://github.com/VipinBioLab/IECET">Code</a></div></li>
+        <li><strong>Vipin Venugopal</strong>, Navin Infant Raj, Malaya Kumar Nath and Norton Stephen. <span class="title">A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images.</span> <span class="venue">Decision Analytics Journal</span>, Elsevier, vol. 8, September 2023.<span class="pill">Scopus Q1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.dajour.2023.100278">DOI</a></div></li>
+        <li>Duggani Keerthana, <strong>Vipin Venugopal</strong>, Malaya Kumar Nath and Madhusudan Mishra. <span class="title">Hybrid convolutional neural networks with SVM classifier for classification of skin cancer.</span> <span class="venue">Biomedical Engineering Advances</span>, Elsevier, vol. 5, June 2023.
+          <div class="actions"><a href="https://doi.org/10.1016/j.bea.2022.100069">DOI</a></div></li>
+        <li><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images.</span> <span class="venue">Computers in Biology and Medicine</span>, Elsevier, vol. 148, September 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 7.7</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.compbiomed.2022.105852">DOI</a><a href="https://github.com/VipinBioLab/DTP-Net">Code</a></div></li>
+        <li><strong>Vipin Venugopal</strong>, Justin Joshep, M. Vipin Das and Malaya Kumar Nath. <span class="title">An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions.</span> <span class="venue">Computer Methods and Programs in Biomedicine</span>, Elsevier, vol. 222, July 2022.<span class="pill">Scopus Q1</span><span class="pill">IF 6.1</span>
+          <div class="actions"><a href="https://doi.org/10.1016/j.cmpb.2022.106935">DOI</a><a href="https://github.com/VipinBioLab/EMST">Code</a></div></li>
+      </ol>
+      <p class="empty none" id="journal-list-empty">No journal articles match that filter.</p>
+    </section>
+
+    <section id="conferences">
+      <h2>Selected conference proceedings</h2>
+      <div class="filter"><label>Filter conference papers <input type="search" data-filter="conf-list" placeholder="Title, author, venue or year"></label></div>
+      <ol class="pubs" id="conf-list">
+        <li>Anerud Thiyagarajan, Giri Prasath R., Kishor S. and <strong>Vipin Venugopal</strong>. <span class="title">A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images.</span> <span class="venue">IEEE RECCAP 2026</span>, IIT Palakkad, 22-24 May 2026.<span class="pill">Presented</span></li>
+        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery.</span> <span class="venue">CVIP 2025</span>, IIT Ropar, 10-13 December 2025.<span class="pill">Presented</span></li>
+        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker.</span> <span class="venue">Mind, Brain, and Consciousness Conference (MBCC) 2025</span>, IIT Mandi, 4-7 June 2025.<span class="pill">Presented</span></li>
+        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications.</span> <span class="venue">ICMOCE 2025</span>, IIT Bhubaneswar, 23-25 May 2025.<span class="pill">Presented</span></li>
+        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">Optimum hyperbolic tangent function for MRI enhancement.</span> <span class="venue">SocProS 2025</span>, IIT Roorkee, 24-26 February 2025.
+          <div class="actions"><a href="https://doi.org/10.1007/978-981-95-4831-6_23">DOI</a></div></li>
+        <li>Simi V.R., Justin Joseph, <strong>Vipin Venugopal</strong> and Rashmi R. <span class="title">A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude.</span> <span class="venue">ICMC 2025</span>, IIT Bhilai, 9-11 January 2025.
+          <div class="actions"><a href="https://doi.org/10.1007/978-981-96-6351-4_21">DOI</a></div></li>
+        <li>Chowtapalle Anuraag Chetty, V.R. Simi, Justin Joseph and <strong>Vipin Venugopal</strong>. <span class="title">A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors.</span> <span class="venue">ICIM 2024</span>, Robinson College, University of Cambridge, 8-10 March 2024.
+          <div class="actions"><a href="https://doi.org/10.1007/978-3-031-64359-0_30">DOI</a></div></li>
+        <li>V. Vipin, M.K. Nath, V. Sreejith, N.F. Giji, A. Ramesh and M. Meera. <span class="title">Detection of melanoma using deep learning techniques: a review.</span> <span class="venue">ICCISc 2021</span>, Govt. Engineering College Idukki, 16-18 June 2021, pp. 1-8.
+          <div class="actions"><a href="https://doi.org/10.1109/ICCISc52257.2021.9484861">DOI</a></div></li>
+        <li>J. James, A. Pe, S. Vasu and V. Vipin. <span class="title">Application of residue number system in the generation of PN-sequences for CDMA systems.</span> <span class="venue">CoCoNet 2015</span>, IITMK Trivandrum, 16-19 December 2015, pp. 670-674.
+          <div class="actions"><a href="https://doi.org/10.1109/CoCoNet.2015.7411261">DOI</a></div></li>
+        <li>A. Pe, M. George, S. Vasu and V. Vipin. <span class="title">A study on solitons in optical communication systems.</span> <span class="venue">IEEE INDICON 2015</span>, Jamia Millia Islamia, New Delhi, 17-20 December 2015, pp. 1-6.
+          <div class="actions"><a href="https://doi.org/10.1109/INDICON.2015.7443469">DOI</a></div></li>
+      </ol>
+      <p class="empty none" id="conf-list-empty">No conference papers match that filter.</p>
+    </section>
+
+    <section id="patent">
+      <h2>Patent</h2>
+      <p>Alkha Mohan, Jayakrishnan Anandakrishnan, <strong>Vipin Venugopal</strong>, Sayantani Ray, Aditya Kumar Samanta, Biswapati Jana, Syed Mahamud Hossein, Debdutta Mandal, Sasmit De and Deepsubhra Guha Roy. <em>AI-Based Crop Health Monitoring Device.</em> U.K. Design Patent No. 6468930, granted 9 September 2025. <a href="https://www.registered-design.service.gov.uk/find/6468930">View registration</a></p>
+    </section>
+
+    <section id="service">
+      <h2>Peer review and memberships</h2>
+      <details>
+        <summary>Journals reviewed</summary>
+        <ul>
+          <li>Computers in Biology and Medicine</li>
+          <li>Computer Methods and Programs in Biomedicine</li>
+          <li>Computer Vision and Image Understanding</li>
+          <li>Multimedia Tools and Applications</li>
+          <li>Medical &amp; Biological Engineering &amp; Computing</li>
+          <li>PeerJ Computer Science</li>
+          <li>IEEE Access</li>
+          <li>Technology and Health Care</li>
+          <li>Decision Analytics Journal</li>
+          <li>Healthcare Analytics</li>
+          <li>e-Prime: Advances in Electrical Engineering, Electronics and Energy</li>
+          <li>Neuroscience Informatics</li>
+          <li>Cancer Investigation</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Conferences reviewed</summary>
+        <ul>
+          <li>IEEE EMBC 2025, Copenhagen, Denmark</li>
+          <li>IEEE ISBI 2024, Athens, Greece</li>
+          <li>IEEE Conference on Artificial Intelligence (CAI) 2024, Singapore</li>
+          <li>ICEMPS 2024, Thiruvananthapuram, India</li>
+          <li>IEEE VTC2023-Fall, Hong Kong</li>
+          <li>3rd International Conference on Electrical, Computer, Communications and Mechatronics Engineering 2023, Tenerife, Spain</li>
+          <li>IEEE Congress on Evolutionary Computation (CEC) 2023, Chicago, USA</li>
+          <li>IEEE VTC2023-Spring, Florence, Italy</li>
+          <li>CTIS 2023, Wuhan, China</li>
+          <li>First International Conference on Signal Processing, Computation, Electronics, Power and Telecommunication 2023, Karaikal, India</li>
+          <li>IEEE Symposium Series on Computational Intelligence 2022, Singapore</li>
+          <li>IEEE World Congress on Computational Intelligence 2022, Padua, Italy</li>
+          <li>IEEE ICCISc 2021, Idukki, India</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Professional bodies</summary>
+        <ul>
+          <li>Life Member, Indian Society for Technical Education (ISTE)</li>
+          <li>Member, IEEE (Kerala Section, Region 10)</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="background">
+      <h2>Education and experience</h2>
+      <h3>Experience</h3>
+      <ul class="timeline">
+        <li><span class="when">Sep 2023 to present</span><div><span class="what">Assistant Professor (Selection Grade)</span><span class="where">Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Coimbatore</span></div></li>
+        <li><span class="when">Dec 2011 to Feb 2021</span><div><span class="what">Assistant Professor</span><span class="where">Department of ECE, SJCET Palai, Kerala</span></div></li>
+      </ul>
+      <h3>Education</h3>
+      <ul class="timeline">
+        <li><span class="when">2021 to 2024</span><div><span class="what">Ph.D., Electronics and Communication Engineering</span><span class="where">National Institute of Technology Puducherry</span><span class="note">Thesis: Development of deep image-to-scalar regressors for quality enhancement and segmentation of dermatological macro-images</span></div></li>
+        <li><span class="when">2008 to 2010</span><div><span class="what">M.Tech., Remote Sensing and Wireless Sensor Networks</span><span class="where">Amrita School of Engineering, Coimbatore</span></div></li>
+        <li><span class="when">2003 to 2007</span><div><span class="what">B.Tech., Electronics and Communication Engineering</span><span class="where">Mahatma Gandhi University, Kottayam</span></div></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Amrita School of Artificial Intelligence<br>Amrita Vishwa Vidyapeetham, Amritanagar, Ettimadai<br>Coimbatore, Tamil Nadu 641 112, India</p>
+      <p><a href="mailto:v_vipin@cb.amrita.edu">v_vipin@cb.amrita.edu</a><br><a href="mailto:dr.vipinvenu@gmail.com">dr.vipinvenu@gmail.com</a></p>
+    </section>
+
+    <footer>&copy; <span id="year">2026</span> Vipin Venugopal</footer>
+  </main>
+</div>
+
+<script>
+/* Year */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Theme toggle (remembered per browser, safe if storage is blocked) */
+(function(){
+  var root = document.documentElement, btn = document.getElementById('theme');
+  try { var s = localStorage.getItem('theme'); if (s) root.setAttribute('data-theme', s); } catch(e){}
+  btn.addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+})();
+
+/* Publication filters */
+document.querySelectorAll('input[data-filter]').forEach(function(input){
+  var list = document.getElementById(input.dataset.filter);
+  var empty = document.getElementById(input.dataset.filter + '-empty');
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase(), shown = 0;
+    list.querySelectorAll('li').forEach(function(li){
+      var hit = !q || li.textContent.toLowerCase().indexOf(q) !== -1;
+      li.classList.toggle('none', !hit);
+      if (hit) shown++;
+    });
+    empty.classList.toggle('none', shown !== 0);
+  });
+});
+
+/* Active section in the side navigation */
+(function(){
+  var links = document.querySelectorAll('nav a');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if (map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('main section').forEach(function(s){ io.observe(s); });
+})();
+
+</script>
+</body>
+</html>
