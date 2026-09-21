@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Add a paper | Dr. Vipin Venugopal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F5F8; --panel:#E6EBF0; --ink:#17222E; --muted:#55636F; --rule:#CFD7DF;
+  --accent:#3A44A8; --accent-ink:#2B3385; --ok:#1E6B3A; --bad:#A4262C;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{--paper:#101720;--panel:#19222D;--ink:#E4EAF0;--muted:#9AA8B5;--rule:#2A3644;--accent:#9AA5FF;--accent-ink:#B9C1FF;--ok:#7FD39B;--bad:#FF8D93}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.1rem;line-height:1.55;
+  padding:max(1.25rem,env(safe-area-inset-top)) max(1.25rem,env(safe-area-inset-right)) 4rem max(1.25rem,env(safe-area-inset-left))}
+.wrap{max-width:52rem;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+h1{font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.15;margin:1rem 0 .4rem;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:2.2rem 0 .8rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+p{margin:0 0 1rem}
+.lead{color:var(--muted)}
+.back{font-family:var(--sans);font-size:.92rem}
+form,.card{font-family:var(--sans)}
+fieldset{border:0;padding:0;margin:0 0 1.4rem}
+legend{font-weight:600;font-size:1rem;padding:0;margin-bottom:.6rem}
+label{display:block;font-size:.92rem;font-weight:500;margin:0 0 .3rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.82rem;margin-top:.15rem}
+input[type=text],input[type=url],input[type=number],select,textarea{
+  font:inherit;font-size:1rem;width:100%;padding:.55rem .7rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
+textarea{min-height:5.5rem;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:grid;gap:1rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:1rem}
+.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field{margin-bottom:1rem}
+.row .field{margin-bottom:0}
+.radios{display:flex;gap:1.5rem;flex-wrap:wrap}
+.radios label{display:flex;align-items:center;gap:.5rem;margin:0;font-size:1rem;cursor:pointer}
+.check{display:flex;align-items:center;gap:.5rem;font-weight:400;font-size:1rem}
+.check input{width:1.1rem;height:1.1rem}
+.inline{display:flex;gap:.6rem;align-items:flex-end}
+.inline .field{flex:1;margin:0}
+button{font:inherit;font-size:.95rem;font-weight:500;padding:.55rem 1.05rem;border-radius:6px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--paper)}
+button:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+button.ghost{background:transparent;color:var(--accent)}
+button.ghost:hover{background:var(--panel)}
+button.small{font-size:.85rem;padding:.35rem .7rem}
+.msg{font-size:.9rem;margin:.5rem 0 0;min-height:1.3em}
+.msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+.card{background:var(--panel);border-radius:10px;padding:1.2rem}
+pre{margin:0 0 1rem;padding:1rem;background:var(--paper);border:1px solid var(--rule);border-radius:8px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;line-height:1.5;white-space:pre;max-height:26rem}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+ol.steps{font-family:var(--sans);font-size:.95rem;padding-left:1.3rem;margin:1rem 0 0}
+ol.steps li{margin-bottom:.4rem}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:var(--panel);padding:.05rem .3rem;border-radius:4px}
+@media (max-width:640px){.row,.row.three{grid-template-columns:1fr;gap:1rem}.inline{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="index.html">&larr; Back to homepage</a></p>
+  <h1>Add a paper</h1>
+  <p class="lead">Fill in the details, or enter a DOI and press <strong>Fill from DOI</strong>. The entry for <code>publications.json</code> appears below, ready to copy. Nothing is saved or sent anywhere except the DOI lookup at Crossref.</p>
+
+  <form id="f" autocomplete="off" onsubmit="return false">
+    <h2>1. Details</h2>
+
+    <fieldset>
+      <legend>Type</legend>
+      <div class="radios">
+        <label><input type="radio" name="type" value="journals" checked> Journal article</label>
+        <label><input type="radio" name="type" value="conferences"> Conference paper</label>
+      </div>
+    </fieldset>
+
+    <div class="inline" style="margin-bottom:1.2rem">
+      <div class="field">
+        <label for="doi">DOI <span class="hint">Optional. Paste the DOI or the full https://doi.org/... link.</span></label>
+        <input type="text" id="doi" placeholder="10.1109/ACCESS.2026.0000000" inputmode="url">
+      </div>
+      <button type="button" id="fetch" class="ghost">Fill from DOI</button>
+    </div>
+    <p class="msg" id="fetchmsg" role="status"></p>
+
+    <div class="field">
+      <label for="authors">Authors <span class="hint">One per line, or separated by commas or &ldquo;and&rdquo;. Write each as First Last, in the order on the paper. Your name is bolded on the page.</span></label>
+      <textarea id="authors" placeholder="First Author&#10;Vipin Venugopal&#10;Another Author"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="title">Title <span class="hint">Without the final full stop. The page uses sentence case, like the other entries. After converting, check proper names and acronyms.</span></label>
+      <input type="text" id="title">
+      <p style="margin:.5rem 0 0"><button type="button" class="ghost small" id="sentence">Convert title to sentence case</button></p>
+    </div>
+
+    <div class="field">
+      <label for="venue" id="venuelabel">Journal name</label>
+      <input type="text" id="venue" placeholder="IEEE Access">
+    </div>
+
+    <div class="row three">
+      <div class="field" id="pubwrap">
+        <label for="publisher">Publisher <span class="hint">Optional, e.g. Elsevier</span></label>
+        <input type="text" id="publisher">
+      </div>
+      <div class="field" id="volwrap">
+        <label for="volume">Volume</label>
+        <input type="text" id="volume" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="pages">Pages or article number <span class="hint">e.g. 131943-131958, or art. 100468</span></label>
+        <input type="text" id="pages">
+      </div>
+    </div>
+
+    <div class="row three">
+      <div class="field">
+        <label for="month">Month</label>
+        <select id="month">
+          <option value="">(none)</option>
+          <option>January</option><option>February</option><option>March</option><option>April</option>
+          <option>May</option><option>June</option><option>July</option><option>August</option>
+          <option>September</option><option>October</option><option>November</option><option>December</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="year">Year</label>
+        <input type="number" id="year" min="1990" max="2100" inputmode="numeric" placeholder="2026">
+      </div>
+      <div class="field" id="placewrap">
+        <label for="place">Place and dates <span class="hint">Conference only, e.g. IIT Ropar, 10-13 December 2025</span></label>
+        <input type="text" id="place">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="detail">Text shown after the venue <span class="hint">Built from the boxes above. You can edit it; press Rebuild to start again from the boxes.</span></label>
+      <div class="inline">
+        <div class="field"><input type="text" id="detail"></div>
+        <button type="button" class="ghost small" id="rebuild">Rebuild</button>
+      </div>
+    </div>
+
+    <h2>2. Tags and links</h2>
+    <div class="row three">
+      <div class="field">
+        <label for="quartile">Scopus quartile</label>
+        <select id="quartile"><option value="">(none)</option><option>Scopus Q1</option><option>Scopus Q2</option><option>Scopus Q3</option><option>Scopus Q4</option></select>
+      </div>
+      <div class="field">
+        <label for="impact">Impact factor <span class="hint">Optional, e.g. 3.6</span></label>
+        <input type="text" id="impact" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="extra">Other tag <span class="hint">Optional</span></label>
+        <input type="text" id="extra">
+      </div>
+    </div>
+    <div class="field">
+      <label class="check"><input type="checkbox" id="presented"> Add a &ldquo;Presented&rdquo; tag</label>
+    </div>
+    <div class="field">
+      <label for="code">Code link <span class="hint">Optional, e.g. a GitHub address</span></label>
+      <input type="url" id="code" placeholder="https://github.com/...">
+    </div>
+  </form>
+
+  <h2>3. Your entry</h2>
+  <div class="card">
+    <pre id="out" aria-live="polite"></pre>
+    <div class="actions">
+      <button type="button" id="copy">Copy entry</button>
+      <span class="msg" id="copymsg" role="status"></span>
+    </div>
+    <ol class="steps">
+      <li>Open <a id="editlink" href="https://github.com/drvipinvenugopal/drvipinvenugopal.github.io/edit/main/publications.json" target="_blank" rel="noopener">publications.json on GitHub</a> and sign in if asked.</li>
+      <li>Find the line <code id="anchor">"journals": [</code>, click at the end of it, and press Enter.</li>
+      <li>Paste the entry, then click <strong>Commit changes</strong>. The homepage updates in a minute or two.</li>
+    </ol>
+  </div>
+
+  <h2>Check publications.json</h2>
+  <p class="lead">One typo in the file hides both lists. Paste the whole file here to check it before or after editing.</p>
+  <div class="field" style="font-family:var(--sans)">
+    <label for="check">Contents of publications.json</label>
+    <textarea id="check" style="min-height:8rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem"></textarea>
+  </div>
+  <p><button type="button" id="validate">Check the file</button></p>
+  <p class="msg" id="checkmsg" role="status" style="font-family:var(--sans)"></p>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var detailManual = false;
+
+  function isConf(){ return document.querySelector('input[name=type]:checked').value === 'conferences'; }
+  function decode(x){ var t = document.createElement('textarea'); t.innerHTML = x || ''; return t.value; }
+  function clean(x){ return (x || '').replace(/\s+/g, ' ').trim(); }
+  function stripStop(x){ return clean(x).replace(/[.\s]+$/, ''); }
+  function parseDoi(x){ return clean(x).replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').replace(/^doi:\s*/i, ''); }
+
+  function parseAuthors(x){
+    var t = (x || '').trim();
+    if (!t) return [];
+    var parts = t.indexOf('\n') > -1 ? t.split(/\n+/) : t.split(/\s*[,;]\s*|\s+and\s+/);
+    return parts.map(function(a){ return clean(a).replace(/^and\s+/i, '').replace(/[,;]+$/, ''); }).filter(Boolean);
+  }
+
+  function pagesText(x){
+    var p = clean(x);
+    if (!p) return '';
+    if (/^(pp?\.|art\.)/i.test(p)) return p;
+    if (/[-\u2013]/.test(p) && /\d/.test(p)) return 'pp. ' + p.replace(/\u2013/g, '-');
+    return 'art. ' + p;
+  }
+
+  function buildDetail(){
+    var parts = [];
+    var my = clean([$('month').value, $('year').value].join(' '));
+    if (isConf()){
+      if (clean($('place').value)) parts.push(clean($('place').value)); else if (my) parts.push(my);
+      if (clean($('volume').value)) parts.push('vol. ' + clean($('volume').value));
+      if (pagesText($('pages').value)) parts.push(pagesText($('pages').value));
+    } else {
+      if (clean($('publisher').value)) parts.push(clean($('publisher').value));
+      if (clean($('volume').value)) parts.push('vol. ' + clean($('volume').value));
+      if (pagesText($('pages').value)) parts.push(pagesText($('pages').value));
+      if (my) parts.push(my);
+    }
+    return parts.join(', ');
+  }
+
+  function entry(){
+    var e = {};
+    e.authors = parseAuthors($('authors').value);
+    e.title = stripStop($('title').value);
+    e.venue = clean($('venue').value);
+    var d = stripStop($('detail').value);
+    if (d) e.detail = d;
+    var tags = [];
+    if ($('quartile').value) tags.push($('quartile').value);
+    if (clean($('impact').value)) tags.push('IF ' + clean($('impact').value).replace(/^IF\s*/i, ''));
+    if ($('presented').checked) tags.push('Presented');
+    if (clean($('extra').value)) tags.push(clean($('extra').value));
+    if (tags.length) e.tags = tags;
+    var doi = parseDoi($('doi').value);
+    if (doi) e.doi = doi;
+    if (clean($('code').value)) e.code = clean($('code').value);
+    return e;
+  }
+
+  function render(){
+    if (!detailManual) $('detail').value = buildDetail();
+    var conf = isConf();
+    $('venuelabel').textContent = conf ? 'Conference name' : 'Journal name';
+    $('pubwrap').style.display = conf ? 'none' : '';
+    $('placewrap').style.display = conf ? '' : 'none';
+    $('anchor').textContent = conf ? '"conferences": [' : '"journals": [';
+    var e = entry();
+    var json = JSON.stringify(e, null, 2).split('\n').map(function(l){ return '    ' + l; }).join('\n');
+    $('out').textContent = json + ',';
+  }
+
+  function sentenceCase(t){
+    t = clean(t);
+    var afterColon = true;
+    return t.split(' ').map(function(w, i){
+      var keep = /[A-Z]{2,}/.test(w) || /\d/.test(w) || /[a-z][A-Z]/.test(w);      // acronyms (OCT, X-GAN), Sentinel-1/2, ViT
+      var out;
+      if (keep) out = w;
+      else if (i === 0 || afterColon) out = w.replace(/^([a-z])/, function(c){ return c.toUpperCase(); }).replace(/-([A-Z])(?=[a-z])/g, function(m, c){ return '-' + c.toLowerCase(); });
+      else out = w.replace(/(^|-)([A-Z])(?=[a-z])/g, function(m, a, c){ return a + c.toLowerCase(); });
+      if (keep && (i === 0 || afterColon)) out = w.charAt(0).toUpperCase() + w.slice(1);
+      afterColon = /:$/.test(w);
+      return out;
+    }).join(' ');
+  }
+
+  // ---- Crossref lookup ----
+  function fill(id, v){ if (v) $(id).value = v; }
+  $('fetch').addEventListener('click', function(){
+    var doi = parseDoi($('doi').value), msg = $('fetchmsg');
+    msg.className = 'msg';
+    if (!doi){ msg.className = 'msg bad'; msg.textContent = 'Enter a DOI first.'; return; }
+    msg.textContent = 'Looking up ' + doi + ' ...';
+    fetch('https://api.crossref.org/works/' + encodeURIComponent(doi))
+      .then(function(r){ if (!r.ok) throw new Error(r.status === 404 ? 'not found' : 'error ' + r.status); return r.json(); })
+      .then(function(j){
+        var m = j.message || {};
+        var conf = /proceedings/i.test(m.type || '');
+        document.querySelector('input[name=type][value=' + (conf ? 'conferences' : 'journals') + ']').checked = true;
+        $('doi').value = doi;
+        $('authors').value = (m.author || []).map(function(a){ return clean((a.given || '') + ' ' + (a.family || a.name || '')); }).join('\n');
+        $('title').value = sentenceCase(decode((m.title || [''])[0].replace(/<[^>]+>/g, '')));
+        $('venue').value = decode((m['container-title'] || [''])[0] || '');
+        $('volume').value = m.volume || '';
+        var pg = m.page || '', art = m['article-number'] || '';
+        $('pages').value = pg ? pg : (art ? 'art. ' + art : '');
+        var dp = ((m.issued || m['published-print'] || m['published-online'] || {})['date-parts'] || [[]])[0] || [];
+        $('year').value = dp[0] || '';
+        $('month').value = dp[1] ? MONTHS[dp[1] - 1] : '';
+        detailManual = false;
+        render();
+        msg.className = 'msg ok';
+        msg.textContent = 'Filled in. Please check every box, then add the quartile, impact factor and code link yourself.' +
+          (m.publisher ? ' (Publisher on record: ' + m.publisher + '.)' : '');
+      })
+      .catch(function(err){ msg.className = 'msg bad'; msg.textContent = 'Could not fetch that DOI (' + err.message + '). You can fill the boxes by hand.'; });
+  });
+
+  // ---- events ----
+  ['authors','title','venue','publisher','volume','pages','month','year','place','quartile','impact','extra','presented','code','doi']
+    .forEach(function(id){ $(id).addEventListener('input', render); $(id).addEventListener('change', render); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=type]'), function(r){ r.addEventListener('change', render); });
+  $('detail').addEventListener('input', function(){ detailManual = true; render(); });
+  $('rebuild').addEventListener('click', function(){ detailManual = false; render(); });
+  $('sentence').addEventListener('click', function(){ $('title').value = sentenceCase($('title').value); render(); });
+
+  $('copy').addEventListener('click', function(){
+    var txt = $('out').textContent, msg = $('copymsg');
+    function done(ok){ msg.className = 'msg ' + (ok ? 'ok' : 'bad'); msg.textContent = ok ? 'Copied' : 'Select the text above and press Ctrl+C'; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ done(false); });
+    } else {
+      var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { done(document.execCommand('copy')); } catch(e){ done(false); }
+      document.body.removeChild(ta);
+    }
+  });
+
+  // ---- publications.json checker ----
+  $('validate').addEventListener('click', function(){
+    var msg = $('checkmsg'), src = $('check').value;
+    msg.className = 'msg';
+    if (!clean(src)){ msg.className = 'msg bad'; msg.textContent = 'Paste the contents of publications.json first.'; return; }
+    var data;
+    try { data = JSON.parse(src); }
+    catch (e){
+      var m = /position (\d+)/.exec(e.message), where = '';
+      if (m){ var before = src.slice(0, +m[1]).split('\n'); where = ' Near line ' + before.length + ', column ' + (before[before.length - 1].length + 1) + '.'; }
+      msg.className = 'msg bad';
+      msg.textContent = 'The file is not valid: ' + e.message + '.' + where + ' Look for a missing comma, a curly quote, or an extra comma after the last item.';
+      return;
+    }
+    var problems = [];
+    ['journals','conferences'].forEach(function(k){
+      if (!Array.isArray(data[k])){ problems.push('"' + k + '" is missing or is not a list.'); return; }
+      data[k].forEach(function(p, i){
+        var tag = k + ' #' + (i + 1);
+        if (!Array.isArray(p.authors) || !p.authors.length) problems.push(tag + ': authors must be a list of names.');
+        if (!p.title) problems.push(tag + ': missing title.');
+        if (!p.venue) problems.push(tag + ': missing venue.');
+      });
+    });
+    if (problems.length){ msg.className = 'msg bad'; msg.textContent = 'The file is valid JSON but has problems: ' + problems.slice(0, 5).join(' '); return; }
+    msg.className = 'msg ok';
+    msg.textContent = 'The file is valid: ' + data.journals.length + ' journal articles and ' + data.conferences.length + ' conference papers.';
+  });
+
+  // Links from the "New papers found" issue arrive as add-paper.html?doi=... (or ?title=...&venue=...&year=...)
+  (function fromLink(){
+    var q;
+    try { q = new URLSearchParams(location.search); } catch(e){ return; }
+    var doi = q.get('doi'), title = q.get('title'), venue = q.get('venue'), year = q.get('year');
+    if (title) $('title').value = clean(title);
+    if (venue) $('venue').value = clean(venue);
+    if (year && /^\d{4}$/.test(year)) $('year').value = year;
+    if (doi) { $('doi').value = parseDoi(doi); render(); $('fetch').click(); }
+  })();
+
+  render();
+})();
+</script>
+</body>
+</html>
