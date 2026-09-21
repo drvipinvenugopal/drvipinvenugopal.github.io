@@ -77,6 +77,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
       <div class="radios">
         <label><input type="radio" name="type" value="journals" checked> Journal article</label>
         <label><input type="radio" name="type" value="conferences"> Conference paper</label>
+        <label><input type="radio" name="type" value="chapters"> Book chapter</label>
       </div>
     </fieldset>
 
@@ -120,6 +121,17 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
       </div>
     </div>
 
+    <div class="row" id="editwrap" style="display:none">
+      <div class="field">
+        <label for="editors">Editors <span class="hint">Book chapter only. Initials and surname, e.g. M. Pant, K. Deep and A.K. Nagar</span></label>
+        <input type="text" id="editors">
+      </div>
+      <div class="field">
+        <label for="series">Book series <span class="hint">Optional, e.g. Mathematics for Sustainable Developments</span></label>
+        <input type="text" id="series">
+      </div>
+    </div>
+
     <div class="row three">
       <div class="field">
         <label for="month">Month</label>
@@ -135,7 +147,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
         <input type="number" id="year" min="1990" max="2100" inputmode="numeric" placeholder="2026">
       </div>
       <div class="field" id="placewrap">
-        <label for="place">Place and dates <span class="hint">Conference only, e.g. IIT Ropar, 10-13 December 2025</span></label>
+        <label for="place" id="placelabel">Place and dates <span class="hint">Conference only, e.g. IIT Ropar, 10-13 December 2025</span></label>
         <input type="text" id="place">
       </div>
     </div>
@@ -202,7 +214,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var detailManual = false;
 
-  function isConf(){ return document.querySelector('input[name=type]:checked').value === 'conferences'; }
+  function kind(){ return document.querySelector('input[name=type]:checked').value; }
   function decode(x){ var t = document.createElement('textarea'); t.innerHTML = x || ''; return t.value; }
   function clean(x){ return (x || '').replace(/\s+/g, ' ').trim(); }
   function stripStop(x){ return clean(x).replace(/[.\s]+$/, ''); }
@@ -224,16 +236,24 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   }
 
   function buildDetail(){
-    var parts = [];
+    var parts = [], k = kind();
     var my = clean([$('month').value, $('year').value].join(' '));
-    if (isConf()){
-      if (clean($('place').value)) parts.push(clean($('place').value)); else if (my) parts.push(my);
-      if (clean($('volume').value)) parts.push('vol. ' + clean($('volume').value));
-      if (pagesText($('pages').value)) parts.push(pagesText($('pages').value));
+    var vol = clean($('volume').value), pg = pagesText($('pages').value), pub = clean($('publisher').value), place = clean($('place').value);
+    if (k === 'conferences'){
+      if (place) parts.push(place); else if (my) parts.push(my);
+      if (vol) parts.push('vol. ' + vol);
+      if (pg) parts.push(pg);
+    } else if (k === 'chapters'){
+      if (clean($('editors').value)) parts.push('eds. ' + clean($('editors').value));
+      if (clean($('series').value)) parts.push(clean($('series').value));
+      if (pub) parts.push(pub);
+      if (place) parts.push(place);
+      if (clean($('year').value)) parts.push(clean($('year').value));
+      if (pg) parts.push(pg);
     } else {
-      if (clean($('publisher').value)) parts.push(clean($('publisher').value));
-      if (clean($('volume').value)) parts.push('vol. ' + clean($('volume').value));
-      if (pagesText($('pages').value)) parts.push(pagesText($('pages').value));
+      if (pub) parts.push(pub);
+      if (vol) parts.push('vol. ' + vol);
+      if (pg) parts.push(pg);
       if (my) parts.push(my);
     }
     return parts.join(', ');
@@ -260,11 +280,16 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 
   function render(){
     if (!detailManual) $('detail').value = buildDetail();
-    var conf = isConf();
-    $('venuelabel').textContent = conf ? 'Conference name' : 'Journal name';
-    $('pubwrap').style.display = conf ? 'none' : '';
-    $('placewrap').style.display = conf ? '' : 'none';
-    $('anchor').textContent = conf ? '"conferences": [' : '"journals": [';
+    var k = kind();
+    $('venuelabel').textContent = k === 'conferences' ? 'Conference name' : k === 'chapters' ? 'Book title' : 'Journal name';
+    $('pubwrap').style.display = k === 'conferences' ? 'none' : '';
+    $('volwrap').style.display = k === 'chapters' ? 'none' : '';
+    $('placewrap').style.display = k === 'journals' ? 'none' : '';
+    $('editwrap').style.display = k === 'chapters' ? '' : 'none';
+    $('placelabel').innerHTML = k === 'chapters'
+      ? 'City of publisher <span class="hint">e.g. Singapore</span>'
+      : 'Place and dates <span class="hint">Conference only, e.g. IIT Ropar, 10-13 December 2025</span>';
+    $('anchor').textContent = '"' + k + '": [';
     var e = entry();
     var json = JSON.stringify(e, null, 2).split('\n').map(function(l){ return '    ' + l; }).join('\n');
     $('out').textContent = json + ',';
@@ -286,7 +311,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   }
 
   // ---- Crossref lookup ----
-  function fill(id, v){ if (v) $(id).value = v; }
+  function initials(g){ return clean(g).split(/[\s-]+/).filter(Boolean).map(function(x){ return x.charAt(0).toUpperCase() + '.'; }).join(''); }
+  function joinNames(l){ return l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' and ' + l[l.length - 1]; }
   $('fetch').addEventListener('click', function(){
     var doi = parseDoi($('doi').value), msg = $('fetchmsg');
     msg.className = 'msg';
@@ -296,12 +322,18 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
       .then(function(r){ if (!r.ok) throw new Error(r.status === 404 ? 'not found' : 'error ' + r.status); return r.json(); })
       .then(function(j){
         var m = j.message || {};
-        var conf = /proceedings/i.test(m.type || '');
-        document.querySelector('input[name=type][value=' + (conf ? 'conferences' : 'journals') + ']').checked = true;
+        var kk = /proceedings/i.test(m.type || '') ? 'conferences' : /chapter/i.test(m.type || '') ? 'chapters' : 'journals';
+        document.querySelector('input[name=type][value=' + kk + ']').checked = true;
         $('doi').value = doi;
         $('authors').value = (m.author || []).map(function(a){ return clean((a.given || '') + ' ' + (a.family || a.name || '')); }).join('\n');
         $('title').value = sentenceCase(decode((m.title || [''])[0].replace(/<[^>]+>/g, '')));
         $('venue').value = decode((m['container-title'] || [''])[0] || '');
+        if (kk === 'chapters'){
+          $('series').value = decode((m['container-title'] || [])[1] || '');
+          $('editors').value = joinNames((m.editor || []).map(function(a){ return initials(a.given) + ' ' + (a.family || a.name || ''); }));
+          $('publisher').value = /^Springer/i.test(m.publisher || '') ? 'Springer' : (m.publisher || '');
+          $('place').value = m['publisher-location'] || '';
+        }
         $('volume').value = m.volume || '';
         var pg = m.page || '', art = m['article-number'] || '';
         $('pages').value = pg ? pg : (art ? 'art. ' + art : '');
@@ -318,7 +350,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
   });
 
   // ---- events ----
-  ['authors','title','venue','publisher','volume','pages','month','year','place','quartile','impact','extra','presented','code','doi']
+  ['authors','title','venue','publisher','volume','pages','month','year','place','editors','series','quartile','impact','extra','presented','code','doi']
     .forEach(function(id){ $(id).addEventListener('input', render); $(id).addEventListener('change', render); });
   Array.prototype.forEach.call(document.querySelectorAll('input[name=type]'), function(r){ r.addEventListener('change', render); });
   $('detail').addEventListener('input', function(){ detailManual = true; render(); });
@@ -352,7 +384,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
       return;
     }
     var problems = [];
-    ['journals','conferences'].forEach(function(k){
+    ['journals','conferences','chapters'].forEach(function(k){
+      if (k === 'chapters' && data[k] === undefined) return;
       if (!Array.isArray(data[k])){ problems.push('"' + k + '" is missing or is not a list.'); return; }
       data[k].forEach(function(p, i){
         var tag = k + ' #' + (i + 1);
@@ -363,7 +396,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
     });
     if (problems.length){ msg.className = 'msg bad'; msg.textContent = 'The file is valid JSON but has problems: ' + problems.slice(0, 5).join(' '); return; }
     msg.className = 'msg ok';
-    msg.textContent = 'The file is valid: ' + data.journals.length + ' journal articles and ' + data.conferences.length + ' conference papers.';
+    msg.textContent = 'The file is valid: ' + data.journals.length + ' journal articles, ' + data.conferences.length + ' conference papers and ' + (data.chapters ? data.chapters.length : 0) + ' book chapters.';
   });
 
   // Links from the "New papers found" issue arrive as add-paper.html?doi=... (or ?title=...&venue=...&year=...)
