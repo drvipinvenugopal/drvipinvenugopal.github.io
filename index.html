@@ -116,11 +116,18 @@ main p,.themes li,.pubs li,details li{text-align:justify;text-justify:inter-word
 .phd-meta{margin:.1rem 0 0;font-family:var(--sans);font-size:.85rem;color:var(--muted)}
 .phd-title{font-weight:600;font-size:1.05rem;line-height:1.4;margin:0 0 .6rem}
 .phd-why{font-size:1rem;color:var(--muted);margin:0 0 1.1rem}
-.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;margin:auto 0 0;padding:0;font-family:var(--sans);font-size:.72rem;color:var(--muted)}
-.steps li{border-top:4px solid var(--rule);padding-top:.4rem;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.phd-legend-head{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0 0 .5rem}
+.milestones{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem .5rem;margin:0 0 1.75rem;padding:0;counter-reset:m;font-family:var(--sans);font-size:.85rem}
+.milestones li{counter-increment:m;display:flex;align-items:center;gap:.4rem;color:var(--ink)}
+.milestones li::before{content:counter(m);display:grid;place-items:center;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--panel);border:1px solid var(--rule);font-size:.75rem;color:var(--muted)}
+.milestones li:not(:last-child)::after{content:"";width:.9rem;height:1px;background:var(--rule);margin-left:.1rem}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.3rem;margin:auto 0 0;padding:0;font-family:var(--sans);font-size:.72rem;color:var(--muted);text-align:center}
+.steps li{position:relative;border-top:4px solid var(--rule);padding-top:.3rem;border-radius:2px}
 .steps .done{border-top-color:var(--accent)}
-.steps .now{border-top-color:var(--accent);color:var(--ink);font-weight:600;background:linear-gradient(90deg,var(--accent) 0 45%,var(--rule) 45% 100%) top/100% 4px no-repeat border-box;border-top-color:transparent}
-.phd-card p.phd-status{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.7rem 0 0}
+.steps .now{color:var(--ink);font-weight:600;border-top-color:transparent;background:linear-gradient(90deg,var(--accent) 0 45%,var(--rule) 45% 100%) top/100% 4px no-repeat border-box}
+.phd-card p.phd-status{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:.7rem 0 0;line-height:1.45}
+.phd-status strong{color:var(--ink);font-weight:600}
 @media (max-width:760px){.phd-grid{grid-template-columns:1fr}}
 /* Lists */
 .links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.5rem}
@@ -378,6 +385,8 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
       <ul class="themes-row" aria-label="Research themes">
         <li>Image restoration</li><li>Medical diagnosis with AI</li><li>Underwater imaging</li><li>Dermatological AI</li>
       </ul>
+      <p class="phd-legend-head">Ph.D. milestones, in order</p>
+      <ol class="milestones" aria-label="Ph.D. milestones"><li>Coursework</li><li>Comprehensive examination</li><li>Qualifier examination</li><li>Open Seminar 1</li><li>Open Seminar 2</li><li>Synopsis</li><li>Open defence</li></ol>
       <ul class="phd-grid">
         <li class="phd-card">
           <div class="phd-top">
@@ -389,10 +398,8 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           </div>
           <p class="phd-title">Physics-Informed Architectures and Spatially Adaptive Frameworks for Radiographic Image Restoration</p>
           <p class="phd-why">Sharper, more trustworthy radiographs from blurred or noisy scans, using models built on the physics of image formation.</p>
-          <ol class="steps" aria-label="Progress: Qualifier completed. Now in the research phase.">
-            <li class="done">Coursework</li> <li class="done">Qualifier</li> <li class="now" aria-current="step">Research</li> <li>Thesis</li>
-          </ol>
-          <p class="phd-status">Qualifier completed. Now in the research phase.</p>
+          <ol class="steps" aria-label="Progress: 3 of 7 milestones completed"><li class="done"><span class="sr">Coursework</span><span aria-hidden="true">1</span></li><li class="done"><span class="sr">Comprehensive examination</span><span aria-hidden="true">2</span></li><li class="done"><span class="sr">Qualifier examination</span><span aria-hidden="true">3</span></li><li class="now" aria-current="step"><span class="sr">Open Seminar 1</span><span aria-hidden="true">4</span></li><li><span class="sr">Open Seminar 2</span><span aria-hidden="true">5</span></li><li><span class="sr">Synopsis</span><span aria-hidden="true">6</span></li><li><span class="sr">Open defence</span><span aria-hidden="true">7</span></li></ol>
+          <p class="phd-status"><strong>Completed:</strong> coursework, comprehensive and qualifier examinations. <strong>Next:</strong> Open Seminar 1.</p>
         </li>
         <li class="phd-card">
           <div class="phd-top">
@@ -404,10 +411,8 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           </div>
           <p class="phd-title">Deep Learning for Early and Explainable Diagnosis of Neurodegenerative Diseases</p>
           <p class="phd-why">AI that helps clinicians recognise neurodegenerative conditions earlier and shows the reasoning behind its decisions.</p>
-          <ol class="steps" aria-label="Progress: Comprehensive examination completed. Now in the research phase.">
-            <li class="done">Coursework</li> <li class="done">Qualifier</li> <li class="now" aria-current="step">Research</li> <li>Thesis</li>
-          </ol>
-          <p class="phd-status">Comprehensive examination completed. Now in the research phase.</p>
+          <ol class="steps" aria-label="Progress: 2 of 7 milestones completed"><li class="done"><span class="sr">Coursework</span><span aria-hidden="true">1</span></li><li class="done"><span class="sr">Comprehensive examination</span><span aria-hidden="true">2</span></li><li class="now" aria-current="step"><span class="sr">Qualifier examination</span><span aria-hidden="true">3</span></li><li><span class="sr">Open Seminar 1</span><span aria-hidden="true">4</span></li><li><span class="sr">Open Seminar 2</span><span aria-hidden="true">5</span></li><li><span class="sr">Synopsis</span><span aria-hidden="true">6</span></li><li><span class="sr">Open defence</span><span aria-hidden="true">7</span></li></ol>
+          <p class="phd-status"><strong>Completed:</strong> coursework and comprehensive examination. <strong>Next:</strong> qualifier examination.</p>
         </li>
         <li class="phd-card">
           <div class="phd-top">
@@ -419,10 +424,8 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           </div>
           <p class="phd-title">Deep Learning Frameworks for Restoration and Enhancement of Degraded Underwater Images</p>
           <p class="phd-why">Recovering the colour, contrast and detail that water absorbs and scatters away.</p>
-          <ol class="steps" aria-label="Progress: Currently completing coursework.">
-            <li class="now" aria-current="step">Coursework</li> <li>Qualifier</li> <li>Research</li> <li>Thesis</li>
-          </ol>
-          <p class="phd-status">Currently completing coursework.</p>
+          <ol class="steps" aria-label="Progress: 0 of 7 milestones completed"><li class="now" aria-current="step"><span class="sr">Coursework</span><span aria-hidden="true">1</span></li><li><span class="sr">Comprehensive examination</span><span aria-hidden="true">2</span></li><li><span class="sr">Qualifier examination</span><span aria-hidden="true">3</span></li><li><span class="sr">Open Seminar 1</span><span aria-hidden="true">4</span></li><li><span class="sr">Open Seminar 2</span><span aria-hidden="true">5</span></li><li><span class="sr">Synopsis</span><span aria-hidden="true">6</span></li><li><span class="sr">Open defence</span><span aria-hidden="true">7</span></li></ol>
+          <p class="phd-status"><strong>Now:</strong> coursework. <strong>Next:</strong> comprehensive examination.</p>
         </li>
         <li class="phd-card">
           <div class="phd-top">
@@ -434,10 +437,8 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           </div>
           <p class="phd-title">Deep Learning for Accurate and Trustworthy Diagnosis of Skin Diseases from Dermatological Images</p>
           <p class="phd-why">Helping identify skin conditions from images, building on our group&rsquo;s work in dermatological image analysis.</p>
-          <ol class="steps" aria-label="Progress: Currently completing coursework.">
-            <li class="now" aria-current="step">Coursework</li> <li>Qualifier</li> <li>Research</li> <li>Thesis</li>
-          </ol>
-          <p class="phd-status">Currently completing coursework.</p>
+          <ol class="steps" aria-label="Progress: 0 of 7 milestones completed"><li class="now" aria-current="step"><span class="sr">Coursework</span><span aria-hidden="true">1</span></li><li><span class="sr">Comprehensive examination</span><span aria-hidden="true">2</span></li><li><span class="sr">Qualifier examination</span><span aria-hidden="true">3</span></li><li><span class="sr">Open Seminar 1</span><span aria-hidden="true">4</span></li><li><span class="sr">Open Seminar 2</span><span aria-hidden="true">5</span></li><li><span class="sr">Synopsis</span><span aria-hidden="true">6</span></li><li><span class="sr">Open defence</span><span aria-hidden="true">7</span></li></ol>
+          <p class="phd-status"><strong>Now:</strong> coursework. <strong>Next:</strong> comprehensive examination.</p>
         </li>
       </ul>
     </section>
