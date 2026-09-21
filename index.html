@@ -280,6 +280,7 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           <li><a href="#research">Research</a></li>
           <li><a href="#journals">Journal articles</a></li>
           <li><a href="#conferences">Conferences</a></li>
+          <li><a href="#chapters">Book chapters</a></li>
           <li><a href="#patent">Patent</a></li>
           <li><a href="#students">Doctoral students</a></li>
           <li><a href="#service">Peer review</a></li>
@@ -347,6 +348,11 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
       <div class="filter"><label>Filter conference papers <input type="search" data-filter="conf-list" placeholder="Title, author, venue or year"></label></div>
       <ol class="pubs" id="conf-list"><li class="loading">Loading publications&hellip;</li></ol>
       <p class="empty none" id="conf-list-empty">No conference papers match that filter.</p>
+    </section>
+
+    <section id="chapters">
+      <h2>Selected book chapters</h2>
+      <ol class="pubs" id="chapter-list"><li class="loading">Loading publications&hellip;</li></ol>
     </section>
 
     <section id="patent">
@@ -649,7 +655,7 @@ fetch('scholar.json', { cache: 'no-cache' })
     return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
   }
   // Used only when an entry has no hand-written "cite" block
-  function makeCite(p, isConf){
+  function makeCite(p, kind){
     var d = p.detail || '', ym = d.match(/\b(?:19|20)\d{2}\b/g);
     var year = p.year || (ym ? ym[ym.length - 1] : '');
     var mi = -1; MON.forEach(function(m, i){ if (mi < 0 && d.indexOf(m) > -1) mi = i; });
@@ -659,8 +665,8 @@ fetch('scholar.json', { cache: 'no-cache' })
     var word = (p.title.toLowerCase().match(/[a-z0-9]{4,}/) || ['paper'])[0];
     var key = first + year + word;
     var au = p.authors.map(function(a){ var n = nameParts(a); return n.last + ', ' + n.first; }).join(' and ');
-    var bib = ['@' + (isConf ? 'inproceedings' : 'article') + '{' + key + ',', '  author = {' + au + '},',
-      '  title = {{' + p.title + '}},', '  ' + (isConf ? 'booktitle' : 'journal') + ' = {' + p.venue + '},'];
+    var bib = ['@' + (kind === 'conf' ? 'inproceedings' : kind === 'chapter' ? 'incollection' : 'article') + '{' + key + ',', '  author = {' + au + '},',
+      '  title = {{' + p.title + '}},', '  ' + (kind === 'journal' ? 'journal' : 'booktitle') + ' = {' + p.venue + '},'];
     if (vol) bib.push('  volume = {' + vol + '},');
     if (pg) bib.push('  pages = {' + pg[1] + '--' + pg[2] + '},');
     if (mi > -1) bib.push('  month = ' + MAB[mi] + ',');
@@ -672,14 +678,14 @@ fetch('scholar.json', { cache: 'no-cache' })
     return { key: key, bib: bib.join('\n'), txt: txt };
   }
 
-  function build(p, i, prefix, isConf){
+  function build(p, i, prefix, kind){
     var id = prefix + (i + 1), li = el('li');
     li.value = i + 1;
     p.authors.forEach(function(a, k){
       if (k > 0) li.appendChild(t(k === p.authors.length - 1 ? ' and ' : ', '));
       if (ME.indexOf(a) > -1) li.appendChild(el('strong', null, a)); else li.appendChild(t(a));
     });
-    li.appendChild(t('. '));
+    li.appendChild(t(/\.$/.test(p.authors[p.authors.length - 1]) ? ' ' : '. '));      // no double full stop after an initial
     li.appendChild(el('span', 'title', p.title + (endsWithStop(p.title) ? '' : '.')));
     li.appendChild(t(' '));
     li.appendChild(el('span', 'venue', p.venue));
@@ -690,12 +696,12 @@ fetch('scholar.json', { cache: 'no-cache' })
     var b = el('button', 'cite', 'Cite'); b.type = 'button'; b.setAttribute('data-cite', id); b.setAttribute('aria-haspopup', 'dialog'); act.appendChild(b);
     if (p.code){ var c = el('a', null, 'Code'); c.href = p.code; act.appendChild(c); }
     li.appendChild(act);
-    CITES[id] = p.cite || makeCite(p, isConf);
+    CITES[id] = p.cite || makeCite(p, kind);
     return li;
   }
-  function render(list, items, prefix, isConf){
+  function render(list, items, prefix, kind){
     list.textContent = '';
-    (items || []).forEach(function(p, i){ list.appendChild(build(p, i, prefix, isConf)); });
+    (items || []).forEach(function(p, i){ list.appendChild(build(p, i, prefix, kind)); });
   }
   function fail(list){
     list.textContent = '';
@@ -703,12 +709,15 @@ fetch('scholar.json', { cache: 'no-cache' })
     list.appendChild(li);
   }
 
-  var jl = document.getElementById('journal-list'), cl = document.getElementById('conf-list');
+  var jl = document.getElementById('journal-list'), cl = document.getElementById('conf-list'), bl = document.getElementById('chapter-list');
   if (!jl || !cl) return;
   fetch('publications.json', { cache: 'no-cache' })
     .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){ render(jl, d.journals, 'j', false); render(cl, d.conferences, 'c', true); })
-    .catch(function(){ fail(jl); fail(cl); });
+    .then(function(d){
+      render(jl, d.journals, 'j', 'journal'); render(cl, d.conferences, 'c', 'conf');
+      if (bl) render(bl, d.chapters, 'b', 'chapter');
+    })
+    .catch(function(){ fail(jl); fail(cl); if (bl) fail(bl); });
 })();
 
 </script>
