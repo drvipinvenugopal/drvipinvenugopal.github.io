@@ -514,5 +514,24 @@
         "txt": "A. Pe, M. George, S. Vasu and V. Vipin, \"A study on solitons in optical communication systems,\" in 2015 Annual IEEE India Conference (INDICON), Jamia Millia Islamia, New Delhi, India, Dec. 2015, pp. 1-6, doi: 10.1109/INDICON.2015.7443469."
       }
     }
+  ],
+  "chapters": [
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R."
+      ],
+      "title": "Optimum hyperbolic tangent function for MRI enhancement",
+      "venue": "Machine Learning and Its Applications to Healthcare",
+      "detail": "eds. M. Pant, K. Deep and A.K. Nagar, Mathematics for Sustainable Developments, Springer, Singapore, 2026",
+      "doi": "10.1007/978-981-95-4831-6_23",
+      "cite": {
+        "key": "simi2026optimum",
+        "bib": "@incollection{simi2026optimum,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Optimum hyperbolic tangent function for {MRI} enhancement}},\n  booktitle = {Machine Learning and Its Applications to Healthcare},\n  editor = {Pant, M. and Deep, K. and Nagar, A. K.},\n  series = {Mathematics for Sustainable Developments},\n  publisher = {Springer},\n  address = {Singapore},\n  year = {2026},\n  doi = {10.1007/978-981-95-4831-6_23}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Optimum hyperbolic tangent function for MRI enhancement,\" in Machine Learning and Its Applications to Healthcare, M. Pant, K. Deep and A.K. Nagar, Eds., Mathematics for Sustainable Developments. Singapore: Springer, 2026, doi: 10.1007/978-981-95-4831-6_23."
+      }
+    }
   ]
 }
