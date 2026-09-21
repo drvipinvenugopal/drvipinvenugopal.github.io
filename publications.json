@@ -1,0 +1,518 @@
+{
+  "journals": [
+    {
+      "authors": [
+        "Manan Mathur",
+        "S. Niyas",
+        "Vipin Venugopal",
+        "S. Raghavendra",
+        "Terry Jacob Mathew",
+        "Abhishek R. Kothari",
+        "B.N. Anoop"
+      ],
+      "title": "Effective deep learning framework for retinal abnormality detection in OCT imaging",
+      "venue": "IEEE Access",
+      "detail": "vol. 14, pp. 131943-131958, September 2026",
+      "tags": [
+        "Scopus Q1",
+        "IF 3.6"
+      ],
+      "doi": "10.1109/ACCESS.2026.3724989",
+      "cite": {
+        "key": "mathur2026oct",
+        "bib": "@article{mathur2026oct,\n  author = {Mathur, Manan and Niyas, S. and Venugopal, Vipin and Raghavendra, S. and Mathew, Terry Jacob and Kothari, Abhishek R. and Anoop, B. N.},\n  title = {{Effective deep learning framework for retinal abnormality detection in OCT imaging}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {14},\n  pages = {131943--131958},\n  month = sep,\n  year = {2026},\n  doi = {10.1109/ACCESS.2026.3724989},\n  url = {https://doi.org/10.1109/ACCESS.2026.3724989}\n}",
+        "txt": "Manan Mathur, S. Niyas, Vipin Venugopal, S. Raghavendra, Terry Jacob Mathew, Abhishek R. Kothari and B.N. Anoop, \"Effective deep learning framework for retinal abnormality detection in OCT imaging,\" IEEE Access, IEEE, vol. 14, pp. 131943-131958, Sep. 2026, doi: 10.1109/ACCESS.2026.3724989."
+      }
+    },
+    {
+      "authors": [
+        "Jayakrishnan Anandakrishnan",
+        "Alkha Mohan",
+        "Vipin Venugopal",
+        "Weiwei Jiang",
+        "Mohd Amiruddin Abd Rahman",
+        "Jawad Khan"
+      ],
+      "title": "Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification",
+      "venue": "IEEE Access",
+      "detail": "August 2026",
+      "tags": [
+        "Scopus Q1",
+        "IF 3.6"
+      ],
+      "doi": "10.1109/ACCESS.2026.3709031",
+      "cite": {
+        "key": "anandakrishnan2026flood",
+        "bib": "@article{anandakrishnan2026flood,\n  author = {Anandakrishnan, Jayakrishnan and Mohan, Alkha and Venugopal, Vipin and Jiang, Weiwei and Rahman, Mohd Amiruddin Abd and Khan, Jawad},\n  title = {{Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  month = aug,\n  year = {2026},\n  doi = {10.1109/ACCESS.2026.3709031},\n  url = {https://doi.org/10.1109/ACCESS.2026.3709031}\n}",
+        "txt": "Jayakrishnan Anandakrishnan, Alkha Mohan, Vipin Venugopal, Weiwei Jiang, Mohd Amiruddin Abd Rahman and Jawad Khan, \"Multimodal Sentinel-1/2 data fusion with a dual-path ViT-Kolmogorov-Arnold network pipeline for AI-driven flood event classification,\" IEEE Access, IEEE, Aug. 2026, doi: 10.1109/ACCESS.2026.3709031."
+      }
+    },
+    {
+      "authors": [
+        "Siju K.S.",
+        "Vipin Venugopal",
+        "Mithun Kumar Kar",
+        "Jayakrishnan Anandakrishnan"
+      ],
+      "title": "An interpretable deep learning method for medical image deblurring and restoration",
+      "venue": "Healthcare Analytics",
+      "detail": "Elsevier, vol. 9, art. 100468, June 2026",
+      "tags": [
+        "Scopus Q1"
+      ],
+      "doi": "10.1016/j.health.2026.100468",
+      "code": "https://github.com/sijuswamyresearch/SAGA",
+      "cite": {
+        "key": "siju2026saga",
+        "bib": "@article{siju2026saga,\n  author = {Siju, K. S. and Venugopal, Vipin and Kar, Mithun Kumar and Anandakrishnan, Jayakrishnan},\n  title = {{An interpretable deep learning method for medical image deblurring and restoration}},\n  journal = {Healthcare Analytics},\n  publisher = {Elsevier},\n  volume = {9},\n  pages = {100468},\n  month = jun,\n  year = {2026},\n  doi = {10.1016/j.health.2026.100468},\n  url = {https://doi.org/10.1016/j.health.2026.100468}\n}",
+        "txt": "Siju K.S., Vipin Venugopal, Mithun Kumar Kar and Jayakrishnan Anandakrishnan, \"An interpretable deep learning method for medical image deblurring and restoration,\" Healthcare Analytics, Elsevier, vol. 9, art. 100468, Jun. 2026, doi: 10.1016/j.health.2026.100468."
+      }
+    },
+    {
+      "authors": [
+        "Siju K.S.",
+        "Vipin Venugopal",
+        "V. Sowmya",
+        "Mithun Kumar Kar"
+      ],
+      "title": "X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising",
+      "venue": "Computer Methods and Programs in Biomedicine Update",
+      "detail": "Elsevier, vol. 9, art. 100247, June 2026",
+      "tags": [
+        "Scopus Q1"
+      ],
+      "doi": "10.1016/j.cmpbup.2026.100247",
+      "code": "https://github.com/sijuswamyresearch/X-GAN",
+      "cite": {
+        "key": "siju2026xgan",
+        "bib": "@article{siju2026xgan,\n  author = {Siju, K. S. and Venugopal, Vipin and Sowmya, V. and Kar, Mithun Kumar},\n  title = {{X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising}},\n  journal = {Computer Methods and Programs in Biomedicine Update},\n  publisher = {Elsevier},\n  volume = {9},\n  pages = {100247},\n  month = jun,\n  year = {2026},\n  doi = {10.1016/j.cmpbup.2026.100247},\n  url = {https://doi.org/10.1016/j.cmpbup.2026.100247}\n}",
+        "txt": "Siju K.S., Vipin Venugopal, V. Sowmya and Mithun Kumar Kar, \"X-GAN: Physics-informed generative model for edge-preserved chest X-ray image denoising,\" Computer Methods and Programs in Biomedicine Update, Elsevier, vol. 9, art. 100247, Jun. 2026, doi: 10.1016/j.cmpbup.2026.100247."
+      }
+    },
+    {
+      "authors": [
+        "K. Yamuna Devi",
+        "J. Sofia Bobby",
+        "S. Vinurajkumar",
+        "Vipin Venugopal"
+      ],
+      "title": "A metaheuristics-equipped post-processing model for coronary angiograms",
+      "venue": "Radiography",
+      "detail": "Elsevier, vol. 32, art. 103355, May 2026",
+      "tags": [
+        "Scopus Q1",
+        "IF 2.8"
+      ],
+      "doi": "10.1016/j.radi.2026.103355",
+      "cite": {
+        "key": "devi2026angio",
+        "bib": "@article{devi2026angio,\n  author = {Devi, K. Yamuna and Bobby, J. Sofia and Vinurajkumar, S. and Venugopal, Vipin},\n  title = {{A metaheuristics-equipped post-processing model for coronary angiograms}},\n  journal = {Radiography},\n  publisher = {Elsevier},\n  volume = {32},\n  pages = {103355},\n  month = may,\n  year = {2026},\n  doi = {10.1016/j.radi.2026.103355},\n  url = {https://doi.org/10.1016/j.radi.2026.103355}\n}",
+        "txt": "K. Yamuna Devi, J. Sofia Bobby, S. Vinurajkumar and Vipin Venugopal, \"A metaheuristics-equipped post-processing model for coronary angiograms,\" Radiography, Elsevier, vol. 32, art. 103355, May 2026, doi: 10.1016/j.radi.2026.103355."
+      }
+    },
+    {
+      "authors": [
+        "S. Sathish",
+        "J. Shanmugapriyan",
+        "R. Praveen Kumar",
+        "S. Vinurajkumar",
+        "Vipin Venugopal"
+      ],
+      "title": "Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover",
+      "venue": "Earth Science Informatics",
+      "detail": "Springer Nature, vol. 19, art. 6, December 2025",
+      "tags": [
+        "Scopus Q1",
+        "IF 3.1"
+      ],
+      "doi": "10.1007/s12145-025-02052-z",
+      "cite": {
+        "key": "sathish2025curiosity",
+        "bib": "@article{sathish2025curiosity,\n  author = {Sathish, S. and Shanmugapriyan, J. and Kumar, R. Praveen and Vinurajkumar, S. and Venugopal, Vipin},\n  title = {{Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover}},\n  journal = {Earth Science Informatics},\n  publisher = {Springer Nature},\n  volume = {19},\n  pages = {6},\n  month = dec,\n  year = {2025},\n  doi = {10.1007/s12145-025-02052-z},\n  url = {https://doi.org/10.1007/s12145-025-02052-z}\n}",
+        "txt": "S. Sathish, J. Shanmugapriyan, R. Praveen Kumar, S. Vinurajkumar and Vipin Venugopal, \"Metaheuristics-equipped automated contrast enhancement for images from mast camera onboard Curiosity Rover,\" Earth Science Informatics, Springer Nature, vol. 19, art. 6, Dec. 2025, doi: 10.1007/s12145-025-02052-z."
+      }
+    },
+    {
+      "authors": [
+        "Likith Adithya",
+        "Gowtham Sai Chandra",
+        "Sri Naga Harshavardhan",
+        "Ruthvik Guptha",
+        "Anoop B.N.",
+        "Vipin Venugopal"
+      ],
+      "title": "IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs",
+      "venue": "Franklin Open",
+      "detail": "Elsevier, vol. 13, p. 100439, December 2025",
+      "tags": [
+        "Scopus Q3"
+      ],
+      "doi": "10.1016/j.fraope.2025.100439",
+      "code": "https://github.com/Blackmonarch4574/IlluC-Net-An-attention-guided-U-Net-for-illumination-correction-in-dermatological-macro-photographs",
+      "cite": {
+        "key": "adithya2025illucnet",
+        "bib": "@article{adithya2025illucnet,\n  author = {Adithya, Likith and Chandra, Gowtham Sai and Harshavardhan, Sri Naga and Guptha, Ruthvik and Anoop, B. N. and Venugopal, Vipin},\n  title = {{IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs}},\n  journal = {Franklin Open},\n  publisher = {Elsevier},\n  volume = {13},\n  pages = {100439},\n  month = dec,\n  year = {2025},\n  doi = {10.1016/j.fraope.2025.100439},\n  url = {https://doi.org/10.1016/j.fraope.2025.100439}\n}",
+        "txt": "Likith Adithya, Gowtham Sai Chandra, Sri Naga Harshavardhan, Ruthvik Guptha, Anoop B.N. and Vipin Venugopal, \"IlluC-Net: An attention-guided U-Net for illumination correction in dermatological macro-photographs,\" Franklin Open, Elsevier, vol. 13, p. 100439, Dec. 2025, doi: 10.1016/j.fraope.2025.100439."
+      }
+    },
+    {
+      "authors": [
+        "Mithun Kumar Kar",
+        "Vipin Venugopal",
+        "Anoop B.N"
+      ],
+      "title": "LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images",
+      "venue": "IEEE Access",
+      "detail": "vol. 13, pp. 177019-177035, November 2025",
+      "tags": [
+        "Scopus Q1",
+        "IF 3.6"
+      ],
+      "doi": "10.1109/ACCESS.2025.3621107",
+      "code": "https://github.com/VipinBioLab/LeSegGAN",
+      "cite": {
+        "key": "kar2025lesseggan",
+        "bib": "@article{kar2025lesseggan,\n  author = {Kar, Mithun Kumar and Venugopal, Vipin and Anoop, B. N.},\n  title = {{LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {13},\n  pages = {177019--177035},\n  month = nov,\n  year = {2025},\n  doi = {10.1109/ACCESS.2025.3621107},\n  url = {https://doi.org/10.1109/ACCESS.2025.3621107}\n}",
+        "txt": "Mithun Kumar Kar, Vipin Venugopal and Anoop B.N., \"LeSegGAN: A hybrid attention-based GAN for accurate lesion segmentation in dermatological images,\" IEEE Access, IEEE, vol. 13, pp. 177019-177035, Nov. 2025, doi: 10.1109/ACCESS.2025.3621107."
+      }
+    },
+    {
+      "authors": [
+        "Naveen K.V.",
+        "Anoop B.N.",
+        "Siju K.S.",
+        "Mithun Kumar Kar",
+        "Vipin Venugopal"
+      ],
+      "title": "EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images",
+      "venue": "IEEE Access",
+      "detail": "vol. 13, pp. 79793-79804, May 2025",
+      "tags": [
+        "Scopus Q1",
+        "IF 3.6"
+      ],
+      "doi": "10.1109/ACCESS.2025.3566073",
+      "code": "https://github.com/Boredlambda/EffNet-SVM",
+      "cite": {
+        "key": "naveen2025effnetsvm",
+        "bib": "@article{naveen2025effnetsvm,\n  author = {Naveen, K. V. and Anoop, B. N. and Siju, K. S. and Kar, Mithun Kumar and Venugopal, Vipin},\n  title = {{EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {13},\n  pages = {79793--79804},\n  month = may,\n  year = {2025},\n  doi = {10.1109/ACCESS.2025.3566073},\n  url = {https://doi.org/10.1109/ACCESS.2025.3566073}\n}",
+        "txt": "Naveen K.V., Anoop B.N., Siju K.S., Mithun Kumar Kar and Vipin Venugopal, \"EffNet-SVM: A hybrid model for diabetic retinopathy classification using retinal fundus images,\" IEEE Access, IEEE, vol. 13, pp. 79793-79804, May 2025, doi: 10.1109/ACCESS.2025.3566073."
+      }
+    },
+    {
+      "authors": [
+        "K. Yamuna Devi",
+        "J. Shanmuga Priyan",
+        "P.G. Kuppusamy",
+        "Deepa Beeta Thiyam",
+        "Vipin Venugopal",
+        "Sathish Sankaran"
+      ],
+      "title": "Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy",
+      "venue": "Biomedical Signal Processing and Control",
+      "detail": "Elsevier, vol. 104, June 2025",
+      "tags": [
+        "Scopus Q1",
+        "IF 4.9"
+      ],
+      "doi": "10.1016/j.bspc.2025.107558",
+      "cite": {
+        "key": "devi2025wce",
+        "bib": "@article{devi2025wce,\n  author = {Devi, K. Yamuna and Priyan, J. Shanmuga and Kuppusamy, P. G. and Thiyam, Deepa Beeta and Venugopal, Vipin and Sankaran, Sathish},\n  title = {{Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy}},\n  journal = {Biomedical Signal Processing and Control},\n  publisher = {Elsevier},\n  volume = {104},\n  month = jun,\n  year = {2025},\n  doi = {10.1016/j.bspc.2025.107558},\n  url = {https://doi.org/10.1016/j.bspc.2025.107558}\n}",
+        "txt": "K. Yamuna Devi, J. Shanmuga Priyan, P.G. Kuppusamy, Deepa Beeta Thiyam, Vipin Venugopal and Sathish Sankaran, \"Probabilistic luminance estimation and optimized gamma correction for wireless capsule endoscopy,\" Biomedical Signal Processing and Control, Elsevier, vol. 104, Jun. 2025, doi: 10.1016/j.bspc.2025.107558."
+      }
+    },
+    {
+      "authors": [
+        "Vipin Venugopal",
+        "Malaya Kumar Nath",
+        "Justin Joshep",
+        "M. Vipin Das"
+      ],
+      "title": "A deep learning-based illumination transform for devignetting photographs of dermatological lesions",
+      "venue": "Image and Vision Computing",
+      "detail": "Elsevier, vol. 142, February 2024",
+      "tags": [
+        "Scopus Q1",
+        "IF 4.7"
+      ],
+      "doi": "10.1016/j.imavis.2024.104909",
+      "code": "https://github.com/VipinBioLab/IECET",
+      "cite": {
+        "key": "venugopal2024iecet",
+        "bib": "@article{venugopal2024iecet,\n  author = {Venugopal, Vipin and Nath, Malaya Kumar and Joshep, Justin and Das, M. Vipin},\n  title = {{A deep learning-based illumination transform for devignetting photographs of dermatological lesions}},\n  journal = {Image and Vision Computing},\n  publisher = {Elsevier},\n  volume = {142},\n  month = feb,\n  year = {2024},\n  doi = {10.1016/j.imavis.2024.104909},\n  url = {https://doi.org/10.1016/j.imavis.2024.104909}\n}",
+        "txt": "Vipin Venugopal, Malaya Kumar Nath, Justin Joshep and M. Vipin Das, \"A deep learning-based illumination transform for devignetting photographs of dermatological lesions,\" Image and Vision Computing, Elsevier, vol. 142, Feb. 2024, doi: 10.1016/j.imavis.2024.104909."
+      }
+    },
+    {
+      "authors": [
+        "Vipin Venugopal",
+        "Navin Infant Raj",
+        "Malaya Kumar Nath",
+        "Norton Stephen"
+      ],
+      "title": "A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images",
+      "venue": "Decision Analytics Journal",
+      "detail": "Elsevier, vol. 8, September 2023",
+      "tags": [
+        "Scopus Q1"
+      ],
+      "doi": "10.1016/j.dajour.2023.100278",
+      "cite": {
+        "key": "venugopal2023effnetskin",
+        "bib": "@article{venugopal2023effnetskin,\n  author = {Venugopal, Vipin and Raj, Navin Infant and Nath, Malaya Kumar and Stephen, Norton},\n  title = {{A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images}},\n  journal = {Decision Analytics Journal},\n  publisher = {Elsevier},\n  volume = {8},\n  month = sep,\n  year = {2023},\n  doi = {10.1016/j.dajour.2023.100278},\n  url = {https://doi.org/10.1016/j.dajour.2023.100278}\n}",
+        "txt": "Vipin Venugopal, Navin Infant Raj, Malaya Kumar Nath and Norton Stephen, \"A deep neural network using modified EfficientNet for skin cancer detection in dermoscopic images,\" Decision Analytics Journal, Elsevier, vol. 8, Sep. 2023, doi: 10.1016/j.dajour.2023.100278."
+      }
+    },
+    {
+      "authors": [
+        "Duggani Keerthana",
+        "Vipin Venugopal",
+        "Malaya Kumar Nath",
+        "Madhusudan Mishra"
+      ],
+      "title": "Hybrid convolutional neural networks with SVM classifier for classification of skin cancer",
+      "venue": "Biomedical Engineering Advances",
+      "detail": "Elsevier, vol. 5, June 2023",
+      "tags": [],
+      "doi": "10.1016/j.bea.2022.100069",
+      "cite": {
+        "key": "keerthana2023hybridcnn",
+        "bib": "@article{keerthana2023hybridcnn,\n  author = {Keerthana, Duggani and Venugopal, Vipin and Nath, Malaya Kumar and Mishra, Madhusudan},\n  title = {{Hybrid convolutional neural networks with SVM classifier for classification of skin cancer}},\n  journal = {Biomedical Engineering Advances},\n  publisher = {Elsevier},\n  volume = {5},\n  month = jun,\n  year = {2023},\n  doi = {10.1016/j.bea.2022.100069},\n  url = {https://doi.org/10.1016/j.bea.2022.100069}\n}",
+        "txt": "Duggani Keerthana, Vipin Venugopal, Malaya Kumar Nath and Madhusudan Mishra, \"Hybrid convolutional neural networks with SVM classifier for classification of skin cancer,\" Biomedical Engineering Advances, Elsevier, vol. 5, Jun. 2023, doi: 10.1016/j.bea.2022.100069."
+      }
+    },
+    {
+      "authors": [
+        "Vipin Venugopal",
+        "Justin Joshep",
+        "M. Vipin Das",
+        "Malaya Kumar Nath"
+      ],
+      "title": "DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images",
+      "venue": "Computers in Biology and Medicine",
+      "detail": "Elsevier, vol. 148, September 2022",
+      "tags": [
+        "Scopus Q1",
+        "IF 7.7"
+      ],
+      "doi": "10.1016/j.compbiomed.2022.105852",
+      "code": "https://github.com/VipinBioLab/DTP-Net",
+      "cite": {
+        "key": "venugopal2022dtpnet",
+        "bib": "@article{venugopal2022dtpnet,\n  author = {Venugopal, Vipin and Joshep, Justin and Das, M. Vipin and Nath, Malaya Kumar},\n  title = {{DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images}},\n  journal = {Computers in Biology and Medicine},\n  publisher = {Elsevier},\n  volume = {148},\n  month = sep,\n  year = {2022},\n  doi = {10.1016/j.compbiomed.2022.105852},\n  url = {https://doi.org/10.1016/j.compbiomed.2022.105852}\n}",
+        "txt": "Vipin Venugopal, Justin Joshep, M. Vipin Das and Malaya Kumar Nath, \"DTP-Net: A convolutional neural network model to predict threshold for localizing the lesions on dermatological macro-images,\" Computers in Biology and Medicine, Elsevier, vol. 148, Sep. 2022, doi: 10.1016/j.compbiomed.2022.105852."
+      }
+    },
+    {
+      "authors": [
+        "Vipin Venugopal",
+        "Justin Joshep",
+        "M. Vipin Das",
+        "Malaya Kumar Nath"
+      ],
+      "title": "An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions",
+      "venue": "Computer Methods and Programs in Biomedicine",
+      "detail": "Elsevier, vol. 222, July 2022",
+      "tags": [
+        "Scopus Q1",
+        "IF 6.1"
+      ],
+      "doi": "10.1016/j.cmpb.2022.106935",
+      "code": "https://github.com/VipinBioLab/EMST",
+      "cite": {
+        "key": "venugopal2022emst",
+        "bib": "@article{venugopal2022emst,\n  author = {Venugopal, Vipin and Joshep, Justin and Das, M. Vipin and Nath, Malaya Kumar},\n  title = {{An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions}},\n  journal = {Computer Methods and Programs in Biomedicine},\n  publisher = {Elsevier},\n  volume = {222},\n  month = jul,\n  year = {2022},\n  doi = {10.1016/j.cmpb.2022.106935},\n  url = {https://doi.org/10.1016/j.cmpb.2022.106935}\n}",
+        "txt": "Vipin Venugopal, Justin Joshep, M. Vipin Das and Malaya Kumar Nath, \"An EfficientNet-based modified sigmoid transform for enhancing dermatological macro-images of melanoma and nevi skin lesions,\" Computer Methods and Programs in Biomedicine, Elsevier, vol. 222, Jul. 2022, doi: 10.1016/j.cmpb.2022.106935."
+      }
+    }
+  ],
+  "conferences": [
+    {
+      "authors": [
+        "Anerud Thiyagarajan",
+        "Giri Prasath R.",
+        "Kishor S.",
+        "Vipin Venugopal"
+      ],
+      "title": "A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images",
+      "venue": "IEEE RECCAP 2026",
+      "detail": "IIT Palakkad, 22-24 May 2026",
+      "tags": [
+        "Presented"
+      ],
+      "cite": {
+        "key": "thiyagarajan2026reccap",
+        "bib": "@inproceedings{thiyagarajan2026reccap,\n  author = {Thiyagarajan, Anerud and Prasath, Giri R. and Kishor, S. and Venugopal, Vipin},\n  title = {{A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images}},\n  booktitle = {IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026)},\n  address = {IIT Palakkad, India},\n  month = may,\n  year = {2026}\n}",
+        "txt": "Anerud Thiyagarajan, Giri Prasath R., Kishor S. and Vipin Venugopal, \"A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images,\" in IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026), IIT Palakkad, India, May 2026."
+      }
+    },
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R"
+      ],
+      "title": "Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery",
+      "venue": "CVIP 2025",
+      "detail": "IIT Ropar, 10-13 December 2025",
+      "tags": [
+        "Presented"
+      ],
+      "cite": {
+        "key": "simi2025cvip",
+        "bib": "@inproceedings{simi2025cvip,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery}},\n  booktitle = {10th International Conference on Computer Vision and Image Processing (CVIP 2025)},\n  address = {IIT Ropar, India},\n  month = dec,\n  year = {2025}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Red-billed Blue Magpie algorithm-based optimum bilateral gamma correction for microscopic imagery,\" in 10th International Conference on Computer Vision and Image Processing (CVIP 2025), IIT Ropar, India, Dec. 2025."
+      }
+    },
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R"
+      ],
+      "title": "Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker",
+      "venue": "Mind, Brain, and Consciousness Conference (MBCC) 2025",
+      "detail": "IIT Mandi, 4-7 June 2025",
+      "tags": [
+        "Presented"
+      ],
+      "cite": {
+        "key": "simi2025mbcc",
+        "bib": "@inproceedings{simi2025mbcc,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker}},\n  booktitle = {Mind, Brain, and Consciousness Conference (MBCC 2025)},\n  address = {IIT Mandi, India},\n  month = jun,\n  year = {2025}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Kurtosis of one-dimensional local binary pattern of electroencephalogram: a schizophrenia biomarker,\" in Mind, Brain, and Consciousness Conference (MBCC 2025), IIT Mandi, India, Jun. 2025."
+      }
+    },
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R"
+      ],
+      "title": "Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications",
+      "venue": "ICMOCE 2025",
+      "detail": "IIT Bhubaneswar, 23-25 May 2025",
+      "tags": [
+        "Presented"
+      ],
+      "cite": {
+        "key": "simi2025icmoce",
+        "bib": "@inproceedings{simi2025icmoce,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications}},\n  booktitle = {3rd International Conference on Microwave, Optical and Communication Engineering (ICMOCE 2025)},\n  address = {IIT Bhubaneswar, India},\n  month = may,\n  year = {2025}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Metaheuristics-based parameter optimization of bilateral gamma correction for image enhancement applications,\" in 3rd International Conference on Microwave, Optical and Communication Engineering (ICMOCE 2025), IIT Bhubaneswar, India, May 2025."
+      }
+    },
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R"
+      ],
+      "title": "Optimum hyperbolic tangent function for MRI enhancement",
+      "venue": "SocProS 2025",
+      "detail": "IIT Roorkee, 24-26 February 2025",
+      "tags": [],
+      "doi": "10.1007/978-981-95-4831-6_23",
+      "cite": {
+        "key": "simi2025socpros",
+        "bib": "@inproceedings{simi2025socpros,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{Optimum hyperbolic tangent function for MRI enhancement}},\n  booktitle = {13th International Conference on Soft Computing for Problem Solving (SocProS 2025)},\n  address = {IIT Roorkee, India},\n  month = feb,\n  year = {2025},\n  doi = {10.1007/978-981-95-4831-6_23},\n  url = {https://doi.org/10.1007/978-981-95-4831-6_23}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"Optimum hyperbolic tangent function for MRI enhancement,\" in 13th International Conference on Soft Computing for Problem Solving (SocProS 2025), IIT Roorkee, India, Feb. 2025, doi: 10.1007/978-981-95-4831-6_23."
+      }
+    },
+    {
+      "authors": [
+        "Simi V.R.",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "Rashmi R"
+      ],
+      "title": "A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude",
+      "venue": "ICMC 2025",
+      "detail": "IIT Bhilai, 9-11 January 2025",
+      "tags": [],
+      "doi": "10.1007/978-981-96-6351-4_21",
+      "cite": {
+        "key": "simi2025icmc",
+        "bib": "@inproceedings{simi2025icmc,\n  author = {Simi, V. R. and Joseph, Justin and Venugopal, Vipin and Rashmi, R.},\n  title = {{A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude}},\n  booktitle = {11th International Conference on Mathematics and Computing (ICMC 2025)},\n  address = {IIT Bhilai, India},\n  month = jan,\n  year = {2025},\n  doi = {10.1007/978-981-96-6351-4_21},\n  url = {https://doi.org/10.1007/978-981-96-6351-4_21}\n}",
+        "txt": "Simi V.R., Justin Joseph, Vipin Venugopal and Rashmi R., \"A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude,\" in 11th International Conference on Mathematics and Computing (ICMC 2025), IIT Bhilai, India, Jan. 2025, doi: 10.1007/978-981-96-6351-4_21."
+      }
+    },
+    {
+      "authors": [
+        "Chowtapalle Anuraag Chetty",
+        "V.R. Simi",
+        "Justin Joseph",
+        "Vipin Venugopal"
+      ],
+      "title": "A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors",
+      "venue": "ICIM 2024",
+      "detail": "Robinson College, University of Cambridge, 8-10 March 2024",
+      "tags": [],
+      "doi": "10.1007/978-3-031-64359-0_30",
+      "cite": {
+        "key": "chetty2024icim",
+        "bib": "@inproceedings{chetty2024icim,\n  author = {Chetty, Chowtapalle Anuraag and Simi, V. R. and Joseph, Justin and Venugopal, Vipin},\n  title = {{A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors}},\n  booktitle = {10th International Conference on Information Management (ICIM 2024)},\n  address = {Robinson College, University of Cambridge, UK},\n  month = mar,\n  year = {2024},\n  doi = {10.1007/978-3-031-64359-0_30},\n  url = {https://doi.org/10.1007/978-3-031-64359-0_30}\n}",
+        "txt": "Chowtapalle Anuraag Chetty, V.R. Simi, Justin Joseph and Vipin Venugopal, \"A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors,\" in 10th International Conference on Information Management (ICIM 2024), Robinson College, University of Cambridge, UK, Mar. 2024, doi: 10.1007/978-3-031-64359-0_30."
+      }
+    },
+    {
+      "authors": [
+        "V. Vipin",
+        "M.K. Nath",
+        "V. Sreejith",
+        "N.F. Giji",
+        "A. Ramesh",
+        "M. Meera"
+      ],
+      "title": "Detection of melanoma using deep learning techniques: a review",
+      "venue": "ICCISc 2021",
+      "detail": "Govt. Engineering College Idukki, 16-18 June 2021, pp. 1-8",
+      "tags": [],
+      "doi": "10.1109/ICCISc52257.2021.9484861",
+      "cite": {
+        "key": "vipin2021iccisc",
+        "bib": "@inproceedings{vipin2021iccisc,\n  author = {Vipin, V. and Nath, M. K. and Sreejith, V. and Giji, N. F. and Ramesh, A. and Meera, M.},\n  title = {{Detection of melanoma using deep learning techniques: a review}},\n  booktitle = {2021 International Conference on Communication, Control and Information Sciences (ICCISc)},\n  address = {Govt. Engineering College Idukki, India},\n  pages = {1--8},\n  month = jun,\n  year = {2021},\n  doi = {10.1109/ICCISc52257.2021.9484861},\n  url = {https://doi.org/10.1109/ICCISc52257.2021.9484861}\n}",
+        "txt": "V. Vipin, M.K. Nath, V. Sreejith, N.F. Giji, A. Ramesh and M. Meera, \"Detection of melanoma using deep learning techniques: a review,\" in 2021 International Conference on Communication, Control and Information Sciences (ICCISc), Govt. Engineering College Idukki, India, Jun. 2021, pp. 1-8, doi: 10.1109/ICCISc52257.2021.9484861."
+      }
+    },
+    {
+      "authors": [
+        "J. James",
+        "A. Pe",
+        "S. Vasu",
+        "V. Vipin"
+      ],
+      "title": "Application of residue number system in the generation of PN-sequences for CDMA systems",
+      "venue": "CoCoNet 2015",
+      "detail": "IITMK Trivandrum, 16-19 December 2015, pp. 670-674",
+      "tags": [],
+      "doi": "10.1109/CoCoNet.2015.7411261",
+      "cite": {
+        "key": "james2015coconet",
+        "bib": "@inproceedings{james2015coconet,\n  author = {James, J. and Pe, A. and Vasu, S. and Vipin, V.},\n  title = {{Application of residue number system in the generation of PN-sequences for CDMA systems}},\n  booktitle = {International Conference on Computing and Network Communications (CoCoNet)},\n  address = {IITMK Trivandrum, India},\n  pages = {670--674},\n  month = dec,\n  year = {2015},\n  doi = {10.1109/CoCoNet.2015.7411261},\n  url = {https://doi.org/10.1109/CoCoNet.2015.7411261}\n}",
+        "txt": "J. James, A. Pe, S. Vasu and V. Vipin, \"Application of residue number system in the generation of PN-sequences for CDMA systems,\" in International Conference on Computing and Network Communications (CoCoNet), IITMK Trivandrum, India, Dec. 2015, pp. 670-674, doi: 10.1109/CoCoNet.2015.7411261."
+      }
+    },
+    {
+      "authors": [
+        "A. Pe",
+        "M. George",
+        "S. Vasu",
+        "V. Vipin"
+      ],
+      "title": "A study on solitons in optical communication systems",
+      "venue": "IEEE INDICON 2015",
+      "detail": "Jamia Millia Islamia, New Delhi, 17-20 December 2015, pp. 1-6",
+      "tags": [],
+      "doi": "10.1109/INDICON.2015.7443469",
+      "cite": {
+        "key": "pe2015indicon",
+        "bib": "@inproceedings{pe2015indicon,\n  author = {Pe, A. and George, M. and Vasu, S. and Vipin, V.},\n  title = {{A study on solitons in optical communication systems}},\n  booktitle = {2015 Annual IEEE India Conference (INDICON)},\n  address = {Jamia Millia Islamia, New Delhi, India},\n  pages = {1--6},\n  month = dec,\n  year = {2015},\n  doi = {10.1109/INDICON.2015.7443469},\n  url = {https://doi.org/10.1109/INDICON.2015.7443469}\n}",
+        "txt": "A. Pe, M. George, S. Vasu and V. Vipin, \"A study on solitons in optical communication systems,\" in 2015 Annual IEEE India Conference (INDICON), Jamia Millia Islamia, New Delhi, India, Dec. 2015, pp. 1-6, doi: 10.1109/INDICON.2015.7443469."
+      }
+    }
+  ]
+}
