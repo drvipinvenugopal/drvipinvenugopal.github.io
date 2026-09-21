@@ -328,6 +328,18 @@
     }
   ],
   "conferences": [
+        {
+      "authors": [
+        "V. R. Simi",
+        "Justin Joseph",
+        "Vipin Venugopal",
+        "R. Rashmi"
+      ],
+      "title": "Optimum hyperbolic tangent function for MRI enhancement",
+      "venue": "Machine Learning and Its Applications to Healthcare",
+      "detail": "pp. 309-319, May 2026",
+      "doi": "10.1007/978-981-95-4831-6_23"
+    },
     {
       "authors": [
         "Anerud Thiyagarajan",
