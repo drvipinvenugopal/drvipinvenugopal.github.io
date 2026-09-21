@@ -129,6 +129,11 @@ main p,.themes li,.pubs li,details li{text-align:justify;text-justify:inter-word
 .phd-card p.phd-status{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:.7rem 0 0;line-height:1.45}
 .phd-status strong{color:var(--ink);font-weight:600}
 @media (max-width:760px){.phd-grid{grid-template-columns:1fr}}
+/* Download CV button */
+.cv-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:1.25rem 0 0}
+.cv-btn{font-family:var(--sans);font-size:.95rem;font-weight:500;background:var(--accent);color:var(--paper);border:1px solid var(--accent);padding:.55rem 1.1rem;border-radius:6px;cursor:pointer}
+.cv-btn:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+.cv-hint{font-family:var(--sans);font-size:.82rem;color:var(--muted)}
 /* Lists */
 .links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.5rem}
 @media (max-width:860px){.links{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -238,7 +243,27 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
   .theme,.cite-actions button,.cite-tabs button{min-height:2.75rem}
   details summary{padding:.35rem 0}
 }
-@media print{aside .theme,nav,.filter,.cite{display:none}.shell{display:block}aside{position:static;height:auto}}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  :root:root:root{--paper:#fff;--panel:#f2f4f7;--ink:#111;--muted:#444;--rule:#c9ced6;--accent:#2B3385;--accent-ink:#2B3385}
+  html{font-size:12.5px;scroll-behavior:auto}
+  body{background:#fff;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  aside,.filter,.cv-row,.cite,dialog,.skip,.actions button{display:none !important}
+  .shell{display:block;max-width:none;padding:0}
+  main{padding:0;overflow:visible}
+  section{padding-bottom:1.1rem;scroll-margin-top:0}
+  h1{font-size:2.2rem}
+  h2{font-size:1.35rem;margin-bottom:.7rem;break-after:avoid;page-break-after:avoid}
+  h3{break-after:avoid;page-break-after:avoid}
+  .portrait{width:6.5rem;height:6.5rem}
+  .pubs li,.phd-card,.timeline li,details,.scholar{break-inside:avoid;page-break-inside:avoid}
+  .pubs li{padding:.55rem 0 .55rem .3rem;font-size:.95rem}
+  .phd-grid{gap:.8rem}
+  .phd-card{padding:.8rem;border:1px solid var(--rule)}
+  .actions{margin-top:.2rem;font-size:.85rem}
+  a{color:#2B3385;text-decoration:none}
+  details>*{display:block}
+}
 </style>
 </head>
 <body>
@@ -278,6 +303,7 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
       <p class="lede">An accomplished Artificial Intelligence (AI) and Deep Learning researcher with 15 years of academic experience and a Ph.D. specializing in computational modeling. My expertise lies in developing novel deep learning algorithms and AI-driven diagnostic tools, with a focus on computer vision applications.</p>
       <p>I have a proven record of publishing in high-impact Q1 journals and a passion for mentoring students in cutting-edge AI technologies.</p>
       <p>I welcome collaborative research and consultation projects in computer vision. <a href="#contact">Get in touch</a>.</p>
+      <p class="cv-row"><button type="button" class="cv-btn" id="cv-btn">Download CV (PDF)</button><span class="cv-hint">Opens your browser&rsquo;s print window. Choose &ldquo;Save as PDF&rdquo;.</span></p>
     </section>
 
     <section id="research">
@@ -767,6 +793,18 @@ fetch('scholar.json', { cache: 'no-cache' })
   });
 })();
 /* end citation dialog */
+/* Download CV: uses the browser's Save as PDF; expands collapsed lists first */
+(function(){
+  var btn = document.getElementById('cv-btn');
+  var d = function(){ return document.querySelectorAll('main details'); };
+  var was = [];
+  function openAll(){ was = []; d().forEach(function(x){ was.push(x.open); x.open = true; }); }
+  function restore(){ d().forEach(function(x, i){ x.open = !!was[i]; }); }
+  window.addEventListener('beforeprint', openAll);
+  window.addEventListener('afterprint', restore);
+  if (btn) btn.addEventListener('click', function(){ window.print(); });
+})();
+
 </script>
 </body>
 </html>
