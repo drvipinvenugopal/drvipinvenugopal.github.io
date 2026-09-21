@@ -101,6 +101,27 @@ main p,.themes li,.pubs li,details li{text-align:justify;text-justify:inter-word
   .head{flex-direction:column-reverse;align-items:flex-start;gap:1rem}
   .portrait{width:8rem;height:8rem}
 }
+/* Doctoral students */
+.themes-row{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.5rem;padding:0;font-family:var(--sans);font-size:.85rem}
+.themes-row li{border:1px solid var(--rule);border-radius:99px;padding:.2rem .8rem;color:var(--muted)}
+.phd-grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin:0;padding:0}
+.phd-card{background:var(--panel);border:1px solid transparent;border-radius:10px;padding:1.3rem 1.3rem 1.2rem;display:flex;flex-direction:column;transition:border-color .2s ease}
+.phd-card:hover{border-color:var(--accent)}
+.phd-top{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.avatar{flex:0 0 auto;width:3rem;height:3rem;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:1.05rem;letter-spacing:.02em;
+  color:var(--accent-ink);background:var(--paper);border:1px solid var(--rule)}
+@supports (background:color-mix(in srgb,red,blue)){.avatar{background:color-mix(in srgb,var(--accent) 14%,var(--paper));border-color:color-mix(in srgb,var(--accent) 35%,var(--paper))}}
+.phd-name{margin:0;font-size:1.2rem}
+.phd-card p{text-align:left;-webkit-hyphens:manual;hyphens:manual;max-width:none}
+.phd-meta{margin:.1rem 0 0;font-family:var(--sans);font-size:.85rem;color:var(--muted)}
+.phd-title{font-weight:600;font-size:1.05rem;line-height:1.4;margin:0 0 .6rem}
+.phd-why{font-size:1rem;color:var(--muted);margin:0 0 1.1rem}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;margin:auto 0 0;padding:0;font-family:var(--sans);font-size:.72rem;color:var(--muted)}
+.steps li{border-top:4px solid var(--rule);padding-top:.4rem;border-radius:2px}
+.steps .done{border-top-color:var(--accent)}
+.steps .now{border-top-color:var(--accent);color:var(--ink);font-weight:600;background:linear-gradient(90deg,var(--accent) 0 45%,var(--rule) 45% 100%) top/100% 4px no-repeat border-box;border-top-color:transparent}
+.phd-card p.phd-status{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.7rem 0 0}
+@media (max-width:760px){.phd-grid{grid-template-columns:1fr}}
 /* Lists */
 .links{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1.5rem}
 @media (max-width:860px){.links{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -227,6 +248,7 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
           <li><a href="#journals">Journal articles</a></li>
           <li><a href="#conferences">Conferences</a></li>
           <li><a href="#patent">Patent</a></li>
+          <li><a href="#students">Doctoral students</a></li>
           <li><a href="#service">Peer review</a></li>
           <li><a href="#background">Education and experience</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -348,6 +370,76 @@ dialog.cite-dialog::backdrop{background:rgba(10,15,22,.55)}
     <section id="patent">
       <h2>Patent</h2>
       <p>Alkha Mohan, Jayakrishnan Anandakrishnan, <strong>Vipin Venugopal</strong>, Sayantani Ray, Aditya Kumar Samanta, Biswapati Jana, Syed Mahamud Hossein, Debdutta Mandal, Sasmit De and Deepsubhra Guha Roy. <em>AI-Based Crop Health Monitoring Device.</em> U.K. Design Patent No. 6468930, granted 9 September 2025. <a href="https://www.registered-design.service.gov.uk/find/6468930">View registration</a></p>
+    </section>
+
+    <section id="students">
+      <h2>Doctoral students</h2>
+      <p>I currently guide four Ph.D. scholars whose work spans radiographic image restoration, neurodegenerative disease diagnosis, underwater imaging and dermatology.</p>
+      <ul class="themes-row" aria-label="Research themes">
+        <li>Image restoration</li><li>Medical diagnosis with AI</li><li>Underwater imaging</li><li>Dermatological AI</li>
+      </ul>
+      <ul class="phd-grid">
+        <li class="phd-card">
+          <div class="phd-top">
+            <span class="avatar" aria-hidden="true">SK</span>
+            <div>
+              <h3 class="phd-name">Siju K.S.</h3>
+              <p class="phd-meta">Part-time &middot; Registered August 2024</p>
+            </div>
+          </div>
+          <p class="phd-title">Physics-Informed Architectures and Spatially Adaptive Frameworks for Radiographic Image Restoration</p>
+          <p class="phd-why">Sharper, more trustworthy radiographs from blurred or noisy scans, using models built on the physics of image formation.</p>
+          <ol class="steps" aria-label="Progress: Qualifier completed. Now in the research phase.">
+            <li class="done">Coursework</li> <li class="done">Qualifier</li> <li class="now" aria-current="step">Research</li> <li>Thesis</li>
+          </ol>
+          <p class="phd-status">Qualifier completed. Now in the research phase.</p>
+        </li>
+        <li class="phd-card">
+          <div class="phd-top">
+            <span class="avatar" aria-hidden="true">KK</span>
+            <div>
+              <h3 class="phd-name">Kavitha K.</h3>
+              <p class="phd-meta">Part-time &middot; Registered August 2024</p>
+            </div>
+          </div>
+          <p class="phd-title">Deep Learning for Early and Explainable Diagnosis of Neurodegenerative Diseases</p>
+          <p class="phd-why">AI that helps clinicians recognise neurodegenerative conditions earlier and shows the reasoning behind its decisions.</p>
+          <ol class="steps" aria-label="Progress: Comprehensive examination completed. Now in the research phase.">
+            <li class="done">Coursework</li> <li class="done">Qualifier</li> <li class="now" aria-current="step">Research</li> <li>Thesis</li>
+          </ol>
+          <p class="phd-status">Comprehensive examination completed. Now in the research phase.</p>
+        </li>
+        <li class="phd-card">
+          <div class="phd-top">
+            <span class="avatar" aria-hidden="true">BK</span>
+            <div>
+              <h3 class="phd-name">Biju K.V.</h3>
+              <p class="phd-meta">Part-time &middot; Registered February 2025</p>
+            </div>
+          </div>
+          <p class="phd-title">Deep Learning Frameworks for Restoration and Enhancement of Degraded Underwater Images</p>
+          <p class="phd-why">Recovering the colour, contrast and detail that water absorbs and scatters away.</p>
+          <ol class="steps" aria-label="Progress: Currently completing coursework.">
+            <li class="now" aria-current="step">Coursework</li> <li>Qualifier</li> <li>Research</li> <li>Thesis</li>
+          </ol>
+          <p class="phd-status">Currently completing coursework.</p>
+        </li>
+        <li class="phd-card">
+          <div class="phd-top">
+            <span class="avatar" aria-hidden="true">SR</span>
+            <div>
+              <h3 class="phd-name">Sreedev R. Nair</h3>
+              <p class="phd-meta">Full-time &middot; Registered July 2026</p>
+            </div>
+          </div>
+          <p class="phd-title">Deep Learning for Accurate and Trustworthy Diagnosis of Skin Diseases from Dermatological Images</p>
+          <p class="phd-why">Helping identify skin conditions from images, building on our group&rsquo;s work in dermatological image analysis.</p>
+          <ol class="steps" aria-label="Progress: Currently completing coursework.">
+            <li class="now" aria-current="step">Coursework</li> <li>Qualifier</li> <li>Research</li> <li>Thesis</li>
+          </ol>
+          <p class="phd-status">Currently completing coursework.</p>
+        </li>
+      </ul>
     </section>
 
     <section id="service">
