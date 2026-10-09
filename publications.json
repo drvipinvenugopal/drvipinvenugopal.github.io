@@ -17,7 +17,7 @@
         "Scopus Q1",
         "IF 3.6"
       ],
-      "Read paper/doi": "10.1109/ACCESS.2026.3724989",
+      "doi": "10.1109/ACCESS.2026.3724989",
       "cite": {
         "key": "mathur2026oct",
         "bib": "@article{mathur2026oct,\n  author = {Mathur, Manan and Niyas, S. and Venugopal, Vipin and Raghavendra, S. and Mathew, Terry Jacob and Kothari, Abhishek R. and Anoop, B. N.},\n  title = {{Effective deep learning framework for retinal abnormality detection in OCT imaging}},\n  journal = {IEEE Access},\n  publisher = {IEEE},\n  volume = {14},\n  pages = {131943--131958},\n  month = sep,\n  year = {2026},\n  doi = {10.1109/ACCESS.2026.3724989},\n  url = {https://doi.org/10.1109/ACCESS.2026.3724989}\n}",
