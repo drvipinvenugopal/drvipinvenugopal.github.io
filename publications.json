@@ -14,7 +14,7 @@
   "detail": "vol. 66, art. 101826, October 2026",
   "tags": ["Scopus Q1"],
   "doi": "10.1016/j.imu.2026.101826",
-   "code": "https://https://github.com/VipinBioLab/GISR-Net",
+   "code": "https://github.com/VipinBioLab/GISR-Net",
   "cite": {
     "key": "Venugopal_gisrnet",
     "bib": "@article{Venugopal_gisrnet,\n  author = {Venugopal, Vipin and Nath, Malaya Kumar and Joseph, Justin and Simi, V.R. and Anoop, B.N.},\n  title = {{GISR-Net: An image-to-scalar regressor for quality assessment of illumination correction in dermatological macro-photographs}},\n  journal = {Informatics in Medicine Unlocked},\n  volume = {66},\n  pages = {101826},\n  month = oct,\n  year = {2026},\n  issn = {2352-9148},\n  doi = {10.1016/j.imu.2026.101826},\n  url = {https://www.sciencedirect.com/science/article/pii/S2352914826000973}\n}",
