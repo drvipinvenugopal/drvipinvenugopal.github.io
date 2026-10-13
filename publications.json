@@ -1,5 +1,25 @@
 {
   "journals": [
+
+    {
+  "authors": [
+    "Vipin Venugopal",
+    "Malaya Kumar Nath",
+    "Justin Joseph",
+    "V.R. Simi",
+    "Anoop B.N."
+  ],
+  "title": "GISR-Net: An image-to-scalar regressor for quality assessment of illumination correction in dermatological macro-photographs",
+  "venue": "Informatics in Medicine Unlocked",
+  "detail": "vol. 66, article No. 101826, October 2026",
+  "tags": ["Scopus Q1",],
+  "doi": "10.1016/j.imu.2026.101826",
+  "cite": {
+    "key": "Venugopal_gisrnet",
+    "bib": "@article{Venugopal_gisrnet,\n  author = {Venugopal, Vipin and Nath, Malaya Kumar and Joseph, Justin and Simi, V.R. and Anoop, B.N.},\n  title = {{GISR-Net: An image-to-scalar regressor for quality assessment of illumination correction in dermatological macro-photographs}},\n  journal = {Informatics in Medicine Unlocked},\n  volume = {66},\n  pages = {101826},\n  month = oct,\n  year = {2026},\n  issn = {2352-9148},\n  doi = {10.1016/j.imu.2026.101826},\n  url = {https://www.sciencedirect.com/science/article/pii/S2352914826000973}\n}",
+    "txt": "Vipin Venugopal, Malaya Kumar Nath, Justin Joseph, V.R. Simi and Anoop B.N., \"GISR-Net: An image-to-scalar regressor for quality assessment of illumination correction in dermatological macro-photographs,\" Informatics in Medicine Unlocked, vol. 66, pp. 101826, Oct. 2026, doi: 10.1016/j.imu.2026.101826."
+  }
+},
     {
       "authors": [
         "Manan Mathur",
