@@ -376,7 +376,7 @@
   ],
   "title": "A Hybrid CNN-Mamba and Ensemble Deep Learning Framework for Mycological Diagnosis from Microscopic Fungal Images",
   "venue": "IEEE RECCAP 2026",
-  "detail": "Palakkad, India, 2026, pp. 1-6",
+  "detail": "IIT Palakkad, India, 2026, pp. 1-6",
   "tags": [
     "IEEE Xplore",
     "Scopus"
@@ -455,7 +455,9 @@
       "title": "Optimum hyperbolic tangent function for MRI enhancement",
       "venue": "SocProS 2025",
       "detail": "IIT Roorkee, 24-26 February 2025",
-      "tags": [],
+      "tags": [
+    "Springer",
+    "Scopus"],
       "doi": "10.1007/978-981-95-4831-6_23",
       "cite": {
         "key": "simi2025socpros",
@@ -473,7 +475,9 @@
       "title": "A generic method based on reptile search optimization to automate the selection of tolerance parameter in Willison's amplitude",
       "venue": "ICMC 2025",
       "detail": "IIT Bhilai, 9-11 January 2025",
-      "tags": [],
+      "tags": [
+    "Springer",
+    "Scopus"],
       "doi": "10.1007/978-981-96-6351-4_21",
       "cite": {
         "key": "simi2025icmc",
@@ -491,7 +495,9 @@
       "title": "A nonparametric feature separability measure and an algorithm for simulating synthetic feature vectors",
       "venue": "ICIM 2024",
       "detail": "Robinson College, University of Cambridge, 8-10 March 2024",
-      "tags": [],
+      "tags": [
+    "Springer",
+    "Scopus"],
       "doi": "10.1007/978-3-031-64359-0_30",
       "cite": {
         "key": "chetty2024icim",
@@ -511,7 +517,9 @@
       "title": "Detection of melanoma using deep learning techniques: a review",
       "venue": "ICCISc 2021",
       "detail": "Govt. Engineering College Idukki, 16-18 June 2021, pp. 1-8",
-      "tags": [],
+      "tags": [
+    "IEEE Xplore",
+    "Scopus"],
       "doi": "10.1109/ICCISc52257.2021.9484861",
       "cite": {
         "key": "vipin2021iccisc",
@@ -529,7 +537,9 @@
       "title": "Application of residue number system in the generation of PN-sequences for CDMA systems",
       "venue": "CoCoNet 2015",
       "detail": "IITMK Trivandrum, 16-19 December 2015, pp. 670-674",
-      "tags": [],
+      "tags": [
+    "IEEE Xplore",
+    "Scopus"],
       "doi": "10.1109/CoCoNet.2015.7411261",
       "cite": {
         "key": "james2015coconet",
@@ -547,7 +557,9 @@
       "title": "A study on solitons in optical communication systems",
       "venue": "IEEE INDICON 2015",
       "detail": "Jamia Millia Islamia, New Delhi, 17-20 December 2015, pp. 1-6",
-      "tags": [],
+      "tags": [
+    "IEEE Xplore",
+    "Scopus"],
       "doi": "10.1109/INDICON.2015.7443469",
       "cite": {
         "key": "pe2015indicon",
