@@ -368,24 +368,26 @@
   ],
   "conferences": [
     {
-      "authors": [
-        "Anerud Thiyagarajan",
-        "Giri Prasath R.",
-        "Kishor S.",
-        "Vipin Venugopal"
-      ],
-      "title": "A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images",
-      "venue": "IEEE RECCAP 2026",
-      "detail": "IIT Palakkad, 22-24 May 2026",
-      "tags": [
-        "Presented"
-      ],
-      "cite": {
-        "key": "thiyagarajan2026reccap",
-        "bib": "@inproceedings{thiyagarajan2026reccap,\n  author = {Thiyagarajan, Anerud and Prasath, Giri R. and Kishor, S. and Venugopal, Vipin},\n  title = {{A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images}},\n  booktitle = {IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026)},\n  address = {IIT Palakkad, India},\n  month = may,\n  year = {2026}\n}",
-        "txt": "Anerud Thiyagarajan, Giri Prasath R., Kishor S. and Vipin Venugopal, \"A hybrid CNN-Mamba and ensemble deep learning framework for mycological diagnosis from microscopic fungal images,\" in IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP 2026), IIT Palakkad, India, May 2026."
-      }
-    },
+  "authors": [
+    "Anerud Thiyagarajan",
+    "Giri Prasath R.",
+    "Kishor S.",
+    "Vipin Venugopal"
+  ],
+  "title": "A Hybrid CNN-Mamba and Ensemble Deep Learning Framework for Mycological Diagnosis from Microscopic Fungal Images",
+  "venue": "IEEE RECCAP 2026",
+  "detail": "Palakkad, India, 2026, pp. 1-6",
+  "tags": [
+    "IEEE Xplore",
+    "Scopus"
+  ],
+  "doi": "10.1109/RECCAP69368.2026.11724105",
+  "cite": {
+    "key": "thiyagarajan2026reccap",
+    "bib": "@inproceedings{thiyagarajan2026reccap,\n  author = {Thiyagarajan, Anerud and Prasath, Giri R. and Kishor, S. and Venugopal, Vipin},\n  title = {{A Hybrid CNN-Mamba and Ensemble Deep Learning Framework for Mycological Diagnosis from Microscopic Fungal Images}},\n  booktitle = {2026 IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP)},\n  address = {Palakkad, India},\n  pages = {1--6},\n  year = {2026},\n  doi = {10.1109/RECCAP69368.2026.11724105},\n  url = {https://doi.org/10.1109/RECCAP69368.2026.11724105}\n}",
+    "txt": "A. Thiyagarajan, G. P. R, K. S, and V. Venugopal, \"A Hybrid CNN-Mamba and Ensemble Deep Learning Framework for Mycological Diagnosis from Microscopic Fungal Images,\" 2026 IEEE International Conference on Recent Advances in Electronics, Communication, Computing, Automation and Power (RECCAP), Palakkad, India, 2026, pp. 1-6, doi: 10.1109/RECCAP69368.2026.11724105."
+  }
+},
     {
       "authors": [
         "Simi V.R.",
