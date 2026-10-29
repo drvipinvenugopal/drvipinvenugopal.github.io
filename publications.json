@@ -1,6 +1,24 @@
 {
   "journals": [
-
+    {
+  "authors": [
+    "Siju K. S.",
+    "Vipin Venugopal",
+    "Mithun Kumar Kar",
+    "Malaya Kumar Nath"
+  ],
+  "title": "An empirical benchmark of activation functions for medical image restoration networks",
+  "venue": "Discover Artificial Intelligence",
+  "detail": "vol. 6, art. 1665, 2026",
+  "tags": ["Springer", "Scopus"],
+  "doi": "10.1007/s44163-026-02265-1",
+  "code": "https://github.com/sijuswamyresearch/AFS-Survey",
+  "cite": {
+    "key": "S2026_activation_functions",
+    "bib": "@article{S2026_activation_functions,\n  author = {S., Siju K. and Venugopal, Vipin and Kar, Mithun Kumar and Nath, Malaya Kumar},\n  title = {{An empirical benchmark of activation functions for medical image restoration networks}},\n  journal = {Discover Artificial Intelligence},\n  volume = {6},\n  pages = {1665},\n  year = {2026},\n  doi = {10.1007/s44163-026-02265-1},\n  url = {https://doi.org/10.1007/s44163-026-02265-1}\n}",
+    "txt": "Siju K. S., Vipin Venugopal, Mithun Kumar Kar, and Malaya Kumar Nath, \"An empirical benchmark of activation functions for medical image restoration networks,\" Discover Artificial Intelligence, vol. 6, art. no. 1665, 2026, doi: 10.1007/s44163-026-02265-1."
+  }
+},
     {
   "authors": [
     "Vipin Venugopal",
